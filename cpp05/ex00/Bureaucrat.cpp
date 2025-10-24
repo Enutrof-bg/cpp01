@@ -21,6 +21,8 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): name(name), grade(gra
 {
 	// this->name = name;
 	// this->grade = grade;
+	if (grade > 150)
+		throw grade;
 }
 
 Bureaucrat::~Bureaucrat()

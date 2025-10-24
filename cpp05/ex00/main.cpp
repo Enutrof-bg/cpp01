@@ -23,12 +23,22 @@ int main()
 
 	// std::cout << br2 << std::endl;
 
-	Bureaucrat test("ALbert", 99);
+	Bureaucrat test("ALbert", 200);
 	std::cout << test << std::endl;
 
-	test.incrementGrade();
-	std::cout << test << std::endl;
+	// test.incrementGrade();
+	// std::cout << test << std::endl;
 
-	test.decrementGrade();
-	std::cout << test << std::endl;
+	// test.decrementGrade();
+	// std::cout << test << std::endl;
+
+	// try
+	// {
+	// 	if (test.getGrade() > 150)
+	// 		throw test.getGrade();
+	// }
+	catch(int grade)
+	{
+		std::cout << "Erreur grade:" << grade<< std::endl;
+	}
 }
