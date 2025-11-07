@@ -2,7 +2,6 @@
 
 void ScalarConverter::convert(std::string str)
 {
-
 	char _char = atoi(str.c_str());
 	int _int = atoi(str.c_str());
 	float _float = atof(str.c_str());
