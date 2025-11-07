@@ -14,7 +14,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-FILE = main.cpp Convert.cpp
+FILE = main.cpp ScalarConverter.cpp
 
 NAME = convert
 
@@ -29,7 +29,7 @@ ${NAME}: ${SRC}
 	${CXX} ${CXXFLAGS} -c $^
 
 clean: 
-	rm -f main.o Convert.o
+	rm -f main.o ScalarConverter.o
 
 fclean:clean
 	rm -f convert
