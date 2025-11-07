@@ -2,10 +2,13 @@
 
 #include <iostream>
 #include <string>
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class AForm
 {
-private:
+protected:
 	const std::string name;
 	bool is_signed;
 	const int grade_to_sign;
@@ -23,7 +26,9 @@ public:
 	virtual int getGradeToSign() const;
 	virtual int getGradeToExec() const;
 
-	// void beSigned(Bureaucrat buro);
+	virtual void beSigned(Bureaucrat buro);
+
+	virtual void execute(Bureaucrat const & executor)const ;
 
 	class GradeTooHighException : public std::exception
 	{
@@ -36,7 +41,12 @@ public:
 		public:
 			virtual const char * what() const throw();
 	};
+
+	class NotSignedException : public std::exception
+	{
+		public:
+			virtual const char * what() const throw();
+	};
 };
 
-
-// std::ostream &operator<<(std::ostream &out, const Bureaucrat &c);
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &c);
