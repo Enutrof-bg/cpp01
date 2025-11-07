@@ -24,25 +24,34 @@ Intern &Intern::operator=(const Intern &other)
 AForm* Intern::makeForm(std::string form, std::string target)
 {
 	AForm *newForm = NULL;
+
+	// try
+	// {
+	// 	if (form == "robotomy")
+	// 		newForm = new RobotomyRequestForm(target);
+	// 	else if (form == "presidential")
+	// 		newForm = new PresidentialPardonForm(target);
+	// 	else if (form == "shruberry")
+	// 		newForm = new ShruberryCreationForm(target);
+	// 	std::cout << "Intern creates " << form << " form." << std::endl;
+	// }
+	// catch (std::exception &e)
+	// {
+	// 	std::cout << "Error" << std::endl;
+	// }
+
 	if (form == "robotomy")
-	{
 		newForm = new RobotomyRequestForm(target);
-		// newForm = tmp;
-	}
 	else if (form == "presidential")
-	{
 		newForm = new PresidentialPardonForm(target);
-		// newForm = tmp;
-	}
 	else if (form == "shruberry")
-	{
 		newForm = new ShruberryCreationForm(target);
-		// newForm = tmp;
-	}
 	else
 	{
 		std::cout << "Error" << std::endl;
+		return newForm;
 	}
 	std::cout << "Intern creates " << form << " form." << std::endl;
+
 	return newForm;
 }
