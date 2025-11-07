@@ -10,17 +10,17 @@ int main()
 	std::cout << "Test1" << std::endl;
 	try
 	{
-		Bureaucrat albert("albert", 5);
+		// Bureaucrat albert("albert", 5);
 		Intern intern;
 		AForm* formA;
 		
 		formA = intern.makeForm("presidential", "albert");;
 		PresidentialPardonForm formT("albert");
-		albert.signForm(*formA);
-		albert.executeForm(*formA);
-		std::cout << albert << std::endl;
+		// albert.signForm(*formA);
+		// albert.executeForm(*formA);
+		// std::cout << albert << std::endl;
 		std::cout << &formA << " " << formA << std::endl;
-		std::cout << formT << std::endl;
+		// std::cout << formT << std::endl;
 	}
 	catch (std::exception &e)
 	{
