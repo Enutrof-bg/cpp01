@@ -2,30 +2,25 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 class RobotomyRequestForm : public AForm
 {
-	RobotomyRequestForm(Bureaucrat target);
+private:
+	const std::string target;
+
+public:
+	RobotomyRequestForm(std::string target);
 	~RobotomyRequestForm();
 	RobotomyRequestForm(const RobotomyRequestForm &copy);
 	RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
 
-	const std::string getName() const;
-	bool getIsSigned() const;
-	int getGradeToSign() const;
-	int getGradeToExec() const;
+	const std::string getTarget() const;
 
-	class GradeTooHighException : public std::exception
-	{
-		public:
-			virtual const char * what() const throw();
-	};
-
-	class GradeTooLowException : public std::exception
-	{
-		public:
-			virtual const char * what() const throw();
-	};
+	void execute(Bureaucrat const & executor)const;
 };
+
+std::ostream &operator<<(std::ostream &out, const RobotomyRequestForm &f);

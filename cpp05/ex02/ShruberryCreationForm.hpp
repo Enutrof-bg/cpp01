@@ -2,30 +2,24 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 class ShruberryCreationForm : public AForm
 {
-	ShruberryCreationForm(Bureaucrat target);
+private:
+	const std::string target;
+
+public:
+	ShruberryCreationForm(std::string target);
 	~ShruberryCreationForm();
 	ShruberryCreationForm(const ShruberryCreationForm &copy);
 	ShruberryCreationForm &operator=(const ShruberryCreationForm &other);
 
-	const std::string getName() const;
-	bool getIsSigned() const;
-	int getGradeToSign() const;
-	int getGradeToExec() const;
+	const std::string getTarget() const;
 
-	class GradeTooHighException : public std::exception
-	{
-		public:
-			virtual const char * what() const throw();
-	};
-
-	class GradeTooLowException : public std::exception
-	{
-		public:
-			virtual const char * what() const throw();
-	};
+	void execute(Bureaucrat const & executor)const;
 };
+
+std::ostream &operator<<(std::ostream &out, const ShruberryCreationForm &f);
