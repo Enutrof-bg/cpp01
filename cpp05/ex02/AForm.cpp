@@ -11,7 +11,7 @@ AForm::~AForm()
 {
 }
 
-AForm::AForm(const AForm &copy):name(copy.name), is_signed(copy.is_signed), 
+AForm::AForm(const AForm &copy): name(copy.name), is_signed(copy.is_signed), 
 		grade_to_sign(copy.grade_to_sign), grade_to_exec(copy.grade_to_exec)
 {
 
