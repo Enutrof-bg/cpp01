@@ -25,26 +25,6 @@ ShruberryCreationForm &ShruberryCreationForm::operator=(const ShruberryCreationF
 	return *this;
 }
 
-// const std::string ShruberryCreationForm::getName() const
-// {
-// 	return this->name;
-// }
-
-// bool ShruberryCreationForm::getIsSigned() const
-// {
-// 	return this->is_signed;
-// }
-
-// int ShruberryCreationForm::getGradeToSign() const
-// {
-// 	return this->grade_to_sign;
-// }
-
-// int ShruberryCreationForm::getGradeToExec() const
-// {
-// 	return this->grade_to_exec;
-// }
-
 const std::string ShruberryCreationForm::getTarget() const
 {
 	return this->target;
@@ -83,16 +63,6 @@ void ShruberryCreationForm::execute(Bureaucrat const & executor) const
 		output.close();
 	}
 }
-
-// const char * ShruberryCreationForm::GradeTooHighException::what() const throw()
-// {
-// 	return "Erreur : grade too low for presidential pardon";
-// }
-
-// const char * ShruberryCreationForm::GradeTooLowException::what() const throw()
-// {
-// 	return "Erreur : grade too high for presidential pardon";
-// }
 
 std::ostream &operator<<(std::ostream &out, const ShruberryCreationForm &f)
 {

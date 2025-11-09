@@ -25,26 +25,6 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	return *this;
 }
 
-// const std::string PresidentialPardonForm::getName() const
-// {
-// 	return this->name;
-// }
-
-// bool PresidentialPardonForm::getIsSigned() const
-// {
-// 	return this->is_signed;
-// }
-
-// int PresidentialPardonForm::getGradeToSign() const
-// {
-// 	return this->grade_to_sign;
-// }
-
-// int PresidentialPardonForm::getGradeToExec() const
-// {
-// 	return this->grade_to_exec;
-// }
-
 const std::string PresidentialPardonForm::getTarget() const
 {
 	return this->target;
@@ -61,16 +41,6 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 		std::cout << "Informs that " << this->target << " has been pardoned by Zaphod Beeblebrox."<<std::endl;
 	}
 }
-
-// const char * PresidentialPardonForm::GradeTooHighException::what() const throw()
-// {
-// 	return "Erreur : grade too low for presidential pardon";
-// }
-
-// const char * PresidentialPardonForm::GradeTooLowException::what() const throw()
-// {
-// 	return "Erreur : grade too high for presidential pardon";
-// }
 
 std::ostream &operator<<(std::ostream &out, const PresidentialPardonForm &f)
 {
