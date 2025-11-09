@@ -16,4 +16,10 @@ public:
 	Intern &operator=(const Intern &other);
 
 	AForm *makeForm(std::string form, std::string target);
+
+	class WrongType : public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
 };

@@ -25,26 +25,6 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 	return *this;
 }
 
-// const std::string RobotomyRequestForm::getName() const
-// {
-// 	return this->name;
-// }
-
-// bool RobotomyRequestForm::getIsSigned() const
-// {
-// 	return this->is_signed;
-// }
-
-// int RobotomyRequestForm::getGradeToSign() const
-// {
-// 	return this->grade_to_sign;
-// }
-
-// int RobotomyRequestForm::getGradeToExec() const
-// {
-// 	return this->grade_to_exec;
-// }
-
 const std::string RobotomyRequestForm::getTarget() const
 {
 	return this->target;
@@ -61,7 +41,6 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 		std::cout << "BRBRBRBRBRBRBRBRBRBR..." << std::endl;
 		srand(time(0));
 		int random = rand();
-		std::cout << random << "|" << random % 2<< std::endl;
 		if (random % 2 == 0)
 		{
 			std::cout << this->getTarget() << " has been robotomized." << std::endl;
@@ -72,16 +51,6 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 		}
 	}
 }
-
-// const char * RobotomyRequestForm::GradeTooHighException::what() const throw()
-// {
-// 	return "Erreur : grade too low for presidential pardon";
-// }
-
-// const char * RobotomyRequestForm::GradeTooLowException::what() const throw()
-// {
-// 	return "Erreur : grade too high for presidential pardon";
-// }
 
 std::ostream &operator<<(std::ostream &out, const RobotomyRequestForm &f)
 {

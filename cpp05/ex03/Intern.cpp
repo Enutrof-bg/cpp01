@@ -21,37 +21,45 @@ Intern &Intern::operator=(const Intern &other)
 	return *this;
 }
 
+AForm* createRobotomyForm(std::string target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+AForm* createPresidentialForm(std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
+AForm* createShruberryForm(std::string target)
+{
+	return (new ShruberryCreationForm(target));
+}
+
+
 AForm* Intern::makeForm(std::string form, std::string target)
 {
 	AForm *newForm = NULL;
 
-	// try
-	// {
-	// 	if (form == "robotomy")
-	// 		newForm = new RobotomyRequestForm(target);
-	// 	else if (form == "presidential")
-	// 		newForm = new PresidentialPardonForm(target);
-	// 	else if (form == "shruberry")
-	// 		newForm = new ShruberryCreationForm(target);
-	// 	std::cout << "Intern creates " << form << " form." << std::endl;
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << "Error" << std::endl;
-	// }
+	AForm* (*formulaire[3])(std::string) = {&createPresidentialForm,
+							&createRobotomyForm,
+							&createShruberryForm};
+	std::string type[3] = {"presidential", "robotomy", "shruberry"};
 
-	if (form == "robotomy")
-		newForm = new RobotomyRequestForm(target);
-	else if (form == "presidential")
-		newForm = new PresidentialPardonForm(target);
-	else if (form == "shruberry")
-		newForm = new ShruberryCreationForm(target);
-	else
+	for(int i = 0; i < 3; i++)
 	{
-		std::cout << "Error" << std::endl;
-		return newForm;
+		if (type[i] == form)
+		{
+			std::cout << "Intern creates " << form << " form." << std::endl;
+			return (formulaire[i](target));
+		}
 	}
-	std::cout << "Intern creates " << form << " form." << std::endl;
-
+	std::cout << "Intern can't create " << form << " form." << std::endl;
+	throw Intern::WrongType();
 	return newForm;
+}
+
+const char* Intern::WrongType::what() const throw()
+{
+	return "Form's type is wrong.";
 }

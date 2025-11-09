@@ -11,10 +11,10 @@ int main()
 	try
 	{
 		Bureaucrat albert("albert", 1);
-		Intern intern;
+		Intern internA;
 		AForm* formA;
 		
-		formA = intern.makeForm("pasdal", "albert");;
+		formA = internA.makeForm("robotomy", "albert");;
 		albert.signForm(*formA);
 		albert.executeForm(*formA);
 
@@ -24,33 +24,39 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
-	// bernard signe mais n'execeute pas
-	// std::cout << "\nTest2" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat bernard("bernard", 20);
-	// 	PresidentialPardonForm formB("bernard");
-	// 	bernard.signForm(formB);
-	// 	bernard.executeForm(formB);
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
+	//bernard signe mais n'execeute pas
+	std::cout << "\nTest2" << std::endl;
+	try
+	{
+		Bureaucrat bernard("bernard", 1);
+		Intern internB;
+		AForm* formB;
+		
+		formB = internB.makeForm("presidential", "albert");;
+		bernard.signForm(*formB);
+		bernard.executeForm(*formB);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
 	// //charle ne peut pas signer et n'execute pas
-	// std::cout << "\nTest3" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat charle("charle", 30);
-	// 	PresidentialPardonForm formC("charle");
-	// 	charle.signForm(formC);
-	// 	charle.executeForm(formC);
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
+	std::cout << "\nTest3" << std::endl;
+	try
+	{
+		Bureaucrat charle("charle", 1);
+		Intern internC;
+		AForm* formC;
+		
+		formC = internC.makeForm("shruberry", "albert");;
+		charle.signForm(*formC);
+		charle.executeForm(*formC);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
 	//david ne peut pas signer
 	// std::cout << "\nTest5" << std::endl;
