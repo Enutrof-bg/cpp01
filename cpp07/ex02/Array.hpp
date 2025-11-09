@@ -15,11 +15,10 @@ public:
 	Array(unsigned int n);
 	~Array();
 	Array(const Array &copy);
-	// Array &operator=(const Array &other);
+	Array &operator=(const Array &other);
 
-	// Array<T>&operator=(const Array<T> &other);
-	
-	Array &operator[]();
+	T &operator[](unsigned int index);
+	const T &operator[](unsigned int index) const;
 
 	unsigned int size();
 };
