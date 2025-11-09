@@ -31,9 +31,9 @@ AForm* createPresidentialForm(std::string target)
 	return (new PresidentialPardonForm(target));
 }
 
-AForm* createShruberryForm(std::string target)
+AForm* createShrubberyForm(std::string target)
 {
-	return (new ShruberryCreationForm(target));
+	return (new ShrubberyCreationForm(target));
 }
 
 
@@ -43,8 +43,8 @@ AForm* Intern::makeForm(std::string form, std::string target)
 
 	AForm* (*formulaire[3])(std::string) = {&createPresidentialForm,
 							&createRobotomyForm,
-							&createShruberryForm};
-	std::string type[3] = {"presidential", "robotomy", "shruberry"};
+							&createShrubberyForm};
+	std::string type[3] = {"presidential", "robotomy", "shrubbery"};
 
 	for(int i = 0; i < 3; i++)
 	{

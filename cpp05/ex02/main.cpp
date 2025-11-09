@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "ShruberryCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
@@ -96,7 +96,7 @@ int main()
 	try
 	{
 		Bureaucrat gerard("gerard", 146);
-		ShruberryCreationForm formG("gerard");
+		ShrubberyCreationForm formG("gerard");
 		gerard.signForm(formG);
 		gerard.executeForm(formG);
 	}
@@ -110,7 +110,7 @@ int main()
 	try
 	{
 		Bureaucrat hhh("hhh", 145);
-		ShruberryCreationForm formH("hhh");
+		ShrubberyCreationForm formH("hhh");
 		hhh.signForm(formH);
 		hhh.executeForm(formH);
 	}
@@ -123,7 +123,7 @@ int main()
 	std::cout << "\nTest9" << std::endl;
 	try{
 		Bureaucrat iric("iric", 137);
-		ShruberryCreationForm formI("iric");
+		ShrubberyCreationForm formI("iric");
 		iric.signForm(formI);
 		iric.executeForm(formI);
 	}

@@ -4,7 +4,7 @@
 #include <string>
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
-#include "ShruberryCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
 class Intern

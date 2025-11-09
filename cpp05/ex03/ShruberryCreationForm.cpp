@@ -1,21 +1,21 @@
-#include "ShruberryCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-ShruberryCreationForm::ShruberryCreationForm(std::string target): AForm("Shruberry Request Form", 145, 137), target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("Shrubbery Request Form", 145, 137), target(target)
 {
 
 }
 
-ShruberryCreationForm::~ShruberryCreationForm()
+ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 
 }
 
-ShruberryCreationForm::ShruberryCreationForm(const ShruberryCreationForm &copy)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy)
 {
 	*this = copy;
 }
 
-ShruberryCreationForm &ShruberryCreationForm::operator=(const ShruberryCreationForm &other)
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
 	if (this != &other)
 	{
@@ -25,12 +25,12 @@ ShruberryCreationForm &ShruberryCreationForm::operator=(const ShruberryCreationF
 	return *this;
 }
 
-const std::string ShruberryCreationForm::getTarget() const
+const std::string ShrubberyCreationForm::getTarget() const
 {
 	return this->target;
 }
 
-void ShruberryCreationForm::execute(Bureaucrat const & executor) const
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	std::string filename;
 	std::ofstream output;
@@ -64,7 +64,7 @@ void ShruberryCreationForm::execute(Bureaucrat const & executor) const
 	}
 }
 
-std::ostream &operator<<(std::ostream &out, const ShruberryCreationForm &f)
+std::ostream &operator<<(std::ostream &out, const ShrubberyCreationForm &f)
 {
 	out << "Form Name: " << f.getName() << ", Signed: " << (f.getIsSigned() ? "Yes" : "No")
 		<< ", Grade Required to Sign: " << f.getGradeToSign()

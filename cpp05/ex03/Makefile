@@ -15,7 +15,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 FILE = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp \
-RobotomyRequestForm.cpp ShruberryCreationForm.cpp Intern.cpp
+RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
 
 NAME = bureaucrat
 
@@ -31,7 +31,7 @@ ${NAME}: ${SRC}
 
 clean: 
 	rm -f main.o Bureaucrat.o AForm.o PresidentialPardonForm.o \
-RobotomyRequestForm.o ShruberryCreationForm.o Intern.o
+RobotomyRequestForm.o ShrubberyCreationForm.o Intern.o
 
 
 fclean:clean

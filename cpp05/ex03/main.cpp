@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "ShruberryCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "Intern.hpp"
 
 int main()
@@ -49,7 +49,7 @@ int main()
 		Intern internC;
 		AForm* formC;
 		
-		formC = internC.makeForm("shruberry", "albert");;
+		formC = internC.makeForm("shrubbery", "albert");;
 		charle.signForm(*formC);
 		charle.executeForm(*formC);
 	}
@@ -58,109 +58,20 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
-	//david ne peut pas signer
-	// std::cout << "\nTest5" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat david("david", 80);
-	// 	Intern internA;
-	// 	AForm* formD;
+	//mauvais type de form
+	std::cout << "\nTest4" << std::endl;
+	try
+	{
+		Bureaucrat charle("charle", 1);
+		Intern internD;
+		AForm* formD;
 		
-	// 	formD = internA.makeForm("robotomy", "albert");;
-	// 	david.signForm(*formD);
-	// 	david.executeForm(*formD);
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-
-	// //eric ne peut pas exec
-	// std::cout << "\nTest6" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat eric("eric", 50);
-	// 	RobotomyRequestForm formE("eric");
-	// 	eric.signForm(formE);
-	// 	eric.executeForm(formE);
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-
-	// //fred signe et exec
-	// std::cout << "\nTest6" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat fred("fred", 30);
-	// 	RobotomyRequestForm formF("fred");
-	// 	fred.signForm(formF);
-	// 	fred.executeForm(formF);
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-
-	// //gerard ne peut pas signer
-	// std::cout << "\nTest7" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat gerard("gerard", 146);
-	// 	ShruberryCreationForm formG("gerard");
-	// 	gerard.signForm(formG);
-	// 	gerard.executeForm(formG);
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-
-	// //triple h signe mais n'exec pas
-	// std::cout << "\nTest8" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat hhh("hhh", 145);
-	// 	ShruberryCreationForm formH("hhh");
-	// 	hhh.signForm(formH);
-	// 	hhh.executeForm(formH);
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-
-	// //iric signe et exec
-	// std::cout << "\nTest9" << std::endl;
-	// try{
-	// 	Bureaucrat iric("iric", 137);
-	// 	ShruberryCreationForm formI("iric");
-	// 	iric.signForm(formI);
-	// 	iric.executeForm(formI);
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-
-	// std::cout << "\nTest10" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat test1("test1", 151);
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-
-	// try
-	// {
-	// 	Bureaucrat test2("test2", 0);
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-	
+		formD = internD.makeForm("shrubberyYY", "albert");;
+		charle.signForm(*formD);
+		charle.executeForm(*formD);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

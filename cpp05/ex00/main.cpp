@@ -14,31 +14,36 @@
 
 int main()
 {
-	std::cout << "test" << std::endl;
-	// Bureaucrat buro;
-
-	// std::cout << buro << std::endl;
-
-	// Bureaucrat br2 = buro;
-
-	// std::cout << br2 << std::endl;
-
-	Bureaucrat test("ALbert", 200);
-	std::cout << test << std::endl;
-
-	// test.incrementGrade();
-	// std::cout << test << std::endl;
-
-	// test.decrementGrade();
-	// std::cout << test << std::endl;
-
-	// try
-	// {
-	// 	if (test.getGrade() > 150)
-	// 		throw test.getGrade();
-	// }
-	catch(int grade)
+	std::cout << "Test1" << std::endl;
+	try
 	{
-		std::cout << "Erreur grade:" << grade<< std::endl;
+		Bureaucrat albert("ALbert", 120);
+		std::cout << albert << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "Erreur grade: " << e.what() << std::endl;
+	}
+
+	std::cout << "\nTest2" << std::endl;
+	try
+	{
+		Bureaucrat bernard("bernard", 151);
+		std::cout << bernard << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "Erreur grade:v" << e.what() << std::endl;
+	}
+
+	std::cout << "\nTest3" << std::endl;
+	try
+	{
+		Bureaucrat charle("charlee", 0);
+		std::cout << charle << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "Erreur grade:v" << e.what() << std::endl;
 	}
 }
