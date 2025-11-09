@@ -39,7 +39,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	else
 	{
 		std::cout << "BRBRBRBRBRBRBRBRBRBR..." << std::endl;
-		srand(time(0));
+		std::srand(std::time(0));
 		int random = rand();
 		if (random % 2 == 0)
 		{

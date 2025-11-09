@@ -46,4 +46,5 @@ int main()
 	{
 		std::cout << "Erreur grade:v" << e.what() << std::endl;
 	}
+	return (0);
 }

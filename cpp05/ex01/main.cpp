@@ -95,4 +95,5 @@ int main()
 	{
 		std::cerr << "Erreur:  " << e.what() << std::endl;
 	}
+	return (0);
 }

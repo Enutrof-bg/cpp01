@@ -15,7 +15,8 @@ public:
 	Intern(const Intern &copy);
 	Intern &operator=(const Intern &other);
 
-	AForm *makeForm(std::string form, std::string target);
+	// AForm* makeForm(std::string form, std::string target);
+	AForm* makeForm(const std::string &form, const std::string &target);
 
 	class WrongType : public std::exception
 	{

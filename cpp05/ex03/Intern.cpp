@@ -21,27 +21,25 @@ Intern &Intern::operator=(const Intern &other)
 	return *this;
 }
 
-AForm* createRobotomyForm(std::string target)
+AForm* createRobotomyForm(const std::string &target)
 {
 	return (new RobotomyRequestForm(target));
 }
 
-AForm* createPresidentialForm(std::string target)
+AForm* createPresidentialForm(const std::string &target)
 {
 	return (new PresidentialPardonForm(target));
 }
 
-AForm* createShrubberyForm(std::string target)
+AForm* createShrubberyForm(const std::string &target)
 {
 	return (new ShrubberyCreationForm(target));
 }
 
 
-AForm* Intern::makeForm(std::string form, std::string target)
+AForm* Intern::makeForm(const std::string &form, const std::string &target)
 {
-	AForm *newForm = NULL;
-
-	AForm* (*formulaire[3])(std::string) = {&createPresidentialForm,
+	AForm* (*formulaire[3])(const std::string &) = {&createPresidentialForm,
 							&createRobotomyForm,
 							&createShrubberyForm};
 	std::string type[3] = {"presidential", "robotomy", "shrubbery"};
@@ -56,7 +54,6 @@ AForm* Intern::makeForm(std::string form, std::string target)
 	}
 	std::cout << "Intern can't create " << form << " form." << std::endl;
 	throw Intern::WrongType();
-	return newForm;
 }
 
 const char* Intern::WrongType::what() const throw()
