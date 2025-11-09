@@ -150,5 +150,15 @@ int main()
 	{
 		std::cout << e.what() << std::endl;
 	}
+
+	//Default constructor sans argument en private
+	// std::cout << "\nTest11" << std::endl;
+	// Bureaucrat boss("boss", 1);
+	// PresidentialPardonForm chungus("big chungus");
+	// PresidentialPardonForm formTest;
+	// formTest = chungus;
+
+	// boss.signForm(formTest);
+	// boss.executeForm(formTest);
 	return (0);
 }
