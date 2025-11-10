@@ -3,10 +3,10 @@
 #include <iostream>
 #include <string>
 
-class Span
+template <typename T> class Span
 {
 private:
-
+	T val;
 public:
 	Span();
 	Span(unsigned int n);
@@ -15,4 +15,7 @@ public:
 	Span &operator=(const Span &other);
 
 	void addNumber();
+	int shortestSpan();
+	int longestSPan();
+	void addMember();
 };
