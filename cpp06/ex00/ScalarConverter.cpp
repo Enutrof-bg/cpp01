@@ -207,6 +207,7 @@ int isDouble(std::string str)
 
 int isElse(std::string str)
 {
+	char *endptr;
 	if (str == "nan")
 	{
 		std::cout << "char: impossible" << std::endl;
@@ -221,39 +222,55 @@ int isElse(std::string str)
 		std::cout << "float: nanff" << std::endl;
 		std::cout << "double: nanf" << std::endl;
 	}
+	else if (str == "+inf" || str == "+inff")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: " << strtof(str.c_str(), &endptr) << "f" <<std::endl;
+		std::cout << "double: " << strtod(str.c_str(), &endptr) << std::endl;
+	}
+	else if (str == "-inf" || str == "-inff")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: " << strtof(str.c_str(), &endptr) << "f" << std::endl;
+		std::cout << "double: " << strtod(str.c_str(), &endptr) << std::endl;
+	}
+	else
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+	}
 	return (0);
 }
 
 void ScalarConverter::convert(std::string str)
 {
-	(void)str;
-	// float f = .5f;
-	// std::cout << static_cast<int>(f) << std::endl;
-	// std::cout << static_cast<double>(f) << std::endl;
-
 	if (isChar(str) == 0)
 	{
-		std::cout << "Char" << std::endl;
+		// std::cout << "Char" << std::endl;
 		convertChar(str);
 	}
 	else if (isInt(str) == 0)
 	{
-		std::cout << "Int" << std::endl;
+		// std::cout << "Int" << std::endl;
 		convertInt(str);
 	}
 	else if (isFloat(str) == 0)
 	{
-		std::cout << "Float" << std::endl;
+		// std::cout << "Float" << std::endl;
 		convertFloat(str);
 	}
 	else if (isDouble(str) == 0)
 	{
-		std::cout << "Double" << std::endl;
+		// std::cout << "Double" << std::endl;
 		convertDouble(str);
 	}
 	else
 	{
-		std::cout << "Autre" << std::endl;
+		// std::cout << "Autre" << std::endl;
 		isElse(str);
 	}
 }
