@@ -33,7 +33,7 @@ int main()
 	}
 	catch(std::exception &e)
 	{
-		std::cout << "Erreur grade:v" << e.what() << std::endl;
+		std::cout << "Erreur grade:" << e.what() << std::endl;
 	}
 
 	std::cout << "\nTest3" << std::endl;
@@ -44,7 +44,7 @@ int main()
 	}
 	catch(std::exception &e)
 	{
-		std::cout << "Erreur grade:v" << e.what() << std::endl;
+		std::cout << "Erreur grade:" << e.what() << std::endl;
 	}
 	return (0);
 }
