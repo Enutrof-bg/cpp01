@@ -160,5 +160,6 @@ int main()
 
 	// boss.signForm(formTest);
 	// boss.executeForm(formTest);
+	AForm teasdst;
 	return (0);
 }

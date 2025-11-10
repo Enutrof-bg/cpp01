@@ -28,7 +28,7 @@ public:
 
 	virtual void beSigned(Bureaucrat buro);
 
-	virtual void execute(Bureaucrat const & executor)const ;
+	virtual void execute(Bureaucrat const & executor)const = 0;
 
 	class GradeTooHighException : public std::exception
 	{
