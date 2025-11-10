@@ -24,16 +24,6 @@ Base *generate(void)
 
 void identify(Base* p)
 {
-	// A* derivedA = dynamic_cast<A*>(p);
-	// B* derivedB = dynamic_cast<B*>(p);
-	// C* derivedC = dynamic_cast<C*>(p);
-	// if (derivedA != NULL)
-	// 	std::cout << "A" << std::endl;
-	// else if (derivedB != NULL)
-	// 	std::cout << "B" << std::endl;
-	// else if (derivedC != NULL)
-	// 	std::cout << "C" << std::endl;
-
 	if (dynamic_cast<A*>(p) != NULL)
 		std::cout << "A" << std::endl;
 	else if (dynamic_cast<B*>(p) != NULL)
@@ -70,7 +60,6 @@ void identify(Base& p)
 			{
 			}
 		}
-
 	}
 }
 
@@ -84,5 +73,4 @@ int main()
 
 	std::cout << "identify &p:" << std::endl;
 	identify(*ptr);
-	// (void)ptr;
 }
