@@ -19,7 +19,7 @@ int main()
 	try
 	{
 		Bureaucrat albert("Albert", 5);
-		Form formulaire("FormulaireA", 10, 20);
+		Form formulaire("FormulaireA", 20, 20);
 
 		albert.signForm(formulaire);
 		std::cout << albert << std::endl;

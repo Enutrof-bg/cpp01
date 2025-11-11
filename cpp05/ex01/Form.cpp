@@ -6,6 +6,10 @@ Form::Form() : name("Default"), is_signed(false), grade_to_sign(150), grade_to_e
 
 Form::Form(const std::string &name, int grade_to_sign, int grade_to_exec) : name(name), is_signed(false), grade_to_sign(grade_to_sign), grade_to_exec(grade_to_exec)
 {
+	if (grade_to_sign < 1 || grade_to_exec < 1)
+		throw Form::GradeTooHighException();
+	if (grade_to_sign > 150 || grade_to_exec > 150)
+		throw Form::GradeTooLowException();
 }
 Form::~Form()
 {
