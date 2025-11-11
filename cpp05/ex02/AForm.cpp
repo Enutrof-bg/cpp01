@@ -58,11 +58,6 @@ void AForm::beSigned(Bureaucrat buro)
 		this->is_signed = true;
 }
 
-void AForm::execute(Bureaucrat const & executor) const
-{
-	(void)executor;
-}
-
 const char * AForm::GradeTooHighException::what() const throw()
 {
 	return ("grade is too high for this form.");
