@@ -9,6 +9,16 @@ int main(int argc, char **argv)
 	}
 	ScalarConverter::convert(argv[1]);
 
-	
+	//Test exemple
+	// int a = 10;
+	// char c = 'a';
+	// (void)a;
+	// (void)c;
+
+	// int *q = (int*)&c;
+	// int *p = static_cast<int *>(&c);
+	// (void)q;
+	// (void)p;
+
 	return (0);
 }
