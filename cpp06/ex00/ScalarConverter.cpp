@@ -1,5 +1,22 @@
 #include "ScalarConverter.hpp"
 
+ScalarConverter::ScalarConverter()
+{
+}
+
+ScalarConverter::~ScalarConverter()
+{
+}
+
+ScalarConverter::ScalarConverter(const ScalarConverter &copy)
+{
+	*this = copy;
+}
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
+{
+	return *this;
+}
+
 int isDot(std::string str)
 {
 	int dot = 0;
