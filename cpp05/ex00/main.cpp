@@ -46,5 +46,29 @@ int main()
 	{
 		std::cout << "Erreur grade:" << e.what() << std::endl;
 	}
+
+	//throw type non connu
+	std::cout << "\nTest4" << std::endl;
+	try
+	{
+		Bureaucrat david("david", 0);
+		std::cout << david << std::endl;
+	}
+	catch(...)
+	{
+		std::cout << "Erreur !" << std::endl;
+	}
+
+
+	std::cout << "\nTest5" << std::endl;
+	try
+	{
+		throw 404;
+	}
+	catch(int num)
+	{
+		std::cout << "Erreur: " << num << std::endl;
+	}
+
 	return (0);
 }

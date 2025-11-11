@@ -79,6 +79,11 @@ const char * AForm::GradeTooLowExecException::what() const throw()
 	return ("grade is too low to execute this form.");
 }
 
+const char * AForm::OpenFailed::what() const throw()
+{
+	return ("open failed.");
+}
+
 std::ostream &operator<<(std::ostream &out, const AForm &f)
 {
 	out << "AForm Name: " << f.getName() << ", Signed: " << (f.getIsSigned() ? "Yes" : "No")

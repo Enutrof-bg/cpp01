@@ -43,4 +43,4 @@ public:
 };
 
 
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &c);
+std::ostream &operator<<(std::ostream &out, const Form &c);

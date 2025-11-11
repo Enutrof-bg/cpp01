@@ -50,7 +50,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		filename = this->getTarget() + "_shrubbery";
 		output.open(filename.c_str());
 		if (!output.is_open())
-			throw std::runtime_error("Open failed");
+			throw AForm::OpenFailed();
 
 		text =  "   oxoxoo    ooxoo\n"
 				"  ooxoxo oo  oxoxooo\n"
