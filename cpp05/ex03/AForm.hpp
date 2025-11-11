@@ -53,6 +53,12 @@ public:
 		public:
 			virtual const char * what() const throw();
 	};
+
+		class OpenFailed : public std::exception
+	{
+		public:
+			virtual const char * what() const throw();
+	};
 };
 
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &c);
+std::ostream &operator<<(std::ostream &out, const AForm &c);
