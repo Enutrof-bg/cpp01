@@ -15,10 +15,12 @@ int main(int argc, char **argv)
 	// (void)a;
 	// (void)c;
 
+	// int *q = (int *)&a;
 	// int *q = (int*)&c;
 	// int *p = static_cast<int *>(&c);
 	// (void)q;
 	// (void)p;
+	// std::cout << *q << std::endl;
 
 	return (0);
 }

@@ -22,5 +22,7 @@ int main()
 	std::cout << after->age << std::endl;
 	delete data;
 
+
+	
 	return 0;
 }
