@@ -14,7 +14,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-FILE = main.cpp whatever.cpp
+FILE = main.cpp
 
 NAME = template
 
@@ -29,7 +29,7 @@ ${NAME}: ${SRC}
 	${CXX} ${CXXFLAGS} -c $^
 
 clean: 
-	rm -f main.o whatever.o
+	rm -f main.o
 
 fclean:clean
 	rm -f template
