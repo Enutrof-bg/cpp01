@@ -73,4 +73,8 @@ int main()
 
 	std::cout << "identify &p:" << std::endl;
 	identify(*ptr);
+
+	Base* base = new B;
+	B* b = dynamic_cast<B *>(base); //std::bad_cast en cas d'erreur = probleme sans try catch
+	(void)b;
 }

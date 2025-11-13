@@ -81,12 +81,19 @@ void convertChar(const std::string &str)
 
 void convertInt(std::string str)
 {
-	(void)str;
-	char *endptr;
-	long x = strtol(str.c_str(), &endptr, 10);
-	// double x = atof(str.c_str());
-	char c = static_cast<char>(x);
+	// char *endptr;
+	// long x = strtol(str.c_str(), &endptr, 10);
+	long x = atol(str.c_str());
+	// if (*endptr != '\0')
+    // {
+	// 	std::cout << "char: impossible" << std::endl;
+	// 	std::cout << "int: impossible" << std::endl;
+	// 	std::cout << "float: impossible" << std::endl;
+	// 	std::cout << "double: impossible" << std::endl;
+	// 	return;
+	// }
 
+	char c = static_cast<char>(x);
 	if (x < CHAR_MIN || x > CHAR_MAX)
 		std::cout << "char: Impossible" << std::endl;
 	else if (c < 32 || c > 126)
@@ -101,7 +108,7 @@ void convertInt(std::string str)
 
 	// float f = static_cast<float>(x);
     // long back = static_cast<long>(f);
-	std::cout << std::fixed;
+	// std::cout << std::fixed;
 	// if (back != f)
 	// {
 		// std::cout << "float: " << static_cast<float>(x) << ".0f" << std::endl;
