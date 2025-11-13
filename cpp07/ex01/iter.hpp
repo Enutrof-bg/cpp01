@@ -3,20 +3,24 @@
 #include <iostream>
 #include <string>
 
-template <typename T>
-void ft_print(T &arg)
+template <typename T1, typename T2>
+void iter(T1 *arr, size_t len, T2 f)
 {
-	std::cout << arg << std::endl;
+	if (!arr || !f)
+		return ;
+	size_t i = 0;
+	while (i < len)
+	{
+		f(arr[i]);
+		i++;
+	}
 }
 
-template <typename T>
-void ft_double(T &arg)
+template <typename T, typename T2>
+void iter(T *arr, size_t len, void(*f)(T2 &))
 {
-	arg *= 2;
-}
-
-template <typename T> void iter(T *arr, const int len, void(*f)(T &))
-{
+	if (!arr || !f)
+		return ;
 	int i = 0;
 	while (i < len)
 	{
@@ -25,8 +29,11 @@ template <typename T> void iter(T *arr, const int len, void(*f)(T &))
 	}
 }
 
-template <typename T> void iter(T *arr, const int len, void(*f)(T const &))
+template <typename T>
+void iter(T *arr, size_t len, void(*f)(T &))
 {
+	if (!arr || !f)
+		return ;
 	int i = 0;
 	while (i < len)
 	{

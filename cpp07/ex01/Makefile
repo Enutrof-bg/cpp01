@@ -14,9 +14,9 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-FILE = main.cpp iter.cpp
+FILE = main.cpp
 
-NAME = template
+NAME = iter
 
 SRC = ${FILE:.cpp=.o}
 
@@ -29,10 +29,10 @@ ${NAME}: ${SRC}
 	${CXX} ${CXXFLAGS} -c $^
 
 clean: 
-	rm -f main.o iter.o
+	rm -f main.o
 
 fclean:clean
-	rm -f template
+	rm -f iter
 
 re:fclean all
 

@@ -20,7 +20,7 @@ public:
 	T &operator[](unsigned int index);
 	const T &operator[](unsigned int index) const;
 
-	unsigned int size();
+	unsigned int size() const;
 };
 
 #include "Array.tpp"

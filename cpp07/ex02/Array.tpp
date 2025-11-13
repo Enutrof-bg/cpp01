@@ -6,8 +6,12 @@ Array<T>::Array() : elements(NULL), len(0)
 }
 
 template <typename T>
-Array<T>::Array(unsigned int n) : elements(new T[n]()), len(n)
+Array<T>::Array(unsigned int n) : elements(NULL), len(n)
 {
+	if (n > 0)
+	{
+			elements = new T[N]();
+	}
 }
 
 template <typename T>
@@ -19,7 +23,12 @@ Array<T>::~Array()
 template <typename T>
 Array<T>::Array(const Array &copy): elements(NULL), len(0)
 {
-	*this = copy;
+	if (len > 0)
+	{
+		elements = new T[len]();
+		for (unsigned int i = 0; i < len; i++)
+			elements[i] = other.elements[i];
+	}
 }
 
 template <typename T>
@@ -28,14 +37,15 @@ Array<T> &Array<T>::operator=(const Array<T> &other)
 	if (this != &other)
 	{
 		len = other.len;
-		delete[] elements;
-		elements = NULL;
+		T* temp = NULL;
 		if (len > 0)
 		{
-			elements = new T[len]();
+			temp = new T[len]();
 			for (unsigned int i = 0; i < len; i++)
-				elements[i] = other.elements[i];
+				temp[i] = other.elements[i];
 		}
+		delete[] elements;
+		elements = temp;
 	}
 	return *this;
 }
@@ -59,7 +69,7 @@ const T &Array<T>::operator[](unsigned int index) const
 
 
 template <typename T>
-unsigned int Array<T>::size()
+unsigned int Array<T>::size() const
 {
 	return len;
 }
