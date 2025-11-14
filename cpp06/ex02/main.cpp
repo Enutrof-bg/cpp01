@@ -71,10 +71,11 @@ int main()
 	std::cout << "identify *p:" << std::endl;
 	identify(ptr);
 
+	Base &ref = *ptr;
 	std::cout << "identify &p:" << std::endl;
-	identify(*ptr);
+	identify(ref);
 
-	Base* base = new B;
-	B* b = dynamic_cast<B *>(base); //std::bad_cast en cas d'erreur = probleme sans try catch
-	(void)b;
+	// Base* base = new B;
+	// B* b = dynamic_cast<B *>(base);
+	// (void)b;
 }
