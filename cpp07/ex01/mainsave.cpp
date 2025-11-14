@@ -20,11 +20,11 @@ void print( T const & x ) {
 
 int main() 
 {
-	int tab[] = { 0, 1, 2, 3, 4 };
+	// int tab[] = { 0, 1, 2, 3, 4 };
 	Awesome tab2[5];
-	iter( tab, 5, print);
-	iter2( tab, 5, print );
-	iter3( tab, 5, print );
-	// iter( tab2, 5, print );
+	// iter( tab, 5, print);
+	// iter2( tab, 5, print );
+	// iter3( tab, 5, print );
+	iter( tab2, 5, print<int> );
 	return 0;
 }
