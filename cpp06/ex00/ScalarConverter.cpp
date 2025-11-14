@@ -81,17 +81,7 @@ void convertChar(const std::string &str)
 
 void convertInt(std::string str)
 {
-	// char *endptr;
-	// long x = strtol(str.c_str(), &endptr, 10);
-	long x = atol(str.c_str());
-	// if (*endptr != '\0')
-    // {
-	// 	std::cout << "char: impossible" << std::endl;
-	// 	std::cout << "int: impossible" << std::endl;
-	// 	std::cout << "float: impossible" << std::endl;
-	// 	std::cout << "double: impossible" << std::endl;
-	// 	return;
-	// }
+	double x = atof(str.c_str());
 
 	char c = static_cast<char>(x);
 	if (x < CHAR_MIN || x > CHAR_MAX)
@@ -101,20 +91,23 @@ void convertInt(std::string str)
 	else
 		std::cout << "char: '" << c << "'" << std::endl;
 
+		
 	if (x < INT_MIN || x > INT_MAX)
 		std::cout << "int: Impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(x) << std::endl;
 
-	// float f = static_cast<float>(x);
-    // long back = static_cast<long>(f);
-	// std::cout << std::fixed;
-	// if (back != f)
-	// {
-		// std::cout << "float: " << static_cast<float>(x) << ".0f" << std::endl;
-	// }
-	std::cout << "float: " << static_cast<float>(x) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(x) << ".0" <<std::endl;
+
+	if (x < -FLT_MAX || x > FLT_MAX)
+	    std::cout << "float: Impossible" << std::endl;
+	else
+		std::cout << "float: " << static_cast<float>(x) << ".0f" << std::endl;
+
+	
+	if (x < -DBL_MAX || x > DBL_MAX)
+	    std::cout << "double: Impossible" << std::endl;
+	else
+		std::cout << "double: " << static_cast<double>(x) << ".0" <<std::endl;
 }
 
 void convertFloat(const std::string &str)
@@ -123,8 +116,8 @@ void convertFloat(const std::string &str)
 	char *endptr;
 	// float val_x = atof(str.c_str());
 	double val_x = strtod(str.c_str(), &endptr);
-	char c = val_x;
-
+	
+	char c = static_cast<char>(val_x);
 	if (val_x < CHAR_MIN || val_x > CHAR_MAX)
 		std::cout << "char: Impossible" << std::endl;
 	else if (c < 32 || c > 126)
@@ -133,7 +126,7 @@ void convertFloat(const std::string &str)
 		std::cout << "char: '" << c << "'" << std::endl;
 
 
-	if (val_x < static_cast<float>(INT_MIN) || val_x > static_cast<float>(INT_MAX))
+	if (val_x < static_cast<double>(INT_MIN) || val_x > static_cast<double>(INT_MAX))
 		std::cout << "int: Impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(val_x) << std::endl;
@@ -156,9 +149,10 @@ void convertFloat(const std::string &str)
 void convertDouble(const std::string &str)
 {
 	(void)str;
-	float val_x = atof(str.c_str());
-	char c = val_x;
+	double val_x = atof(str.c_str());
 
+
+	char c = static_cast<char>(val_x);
 	if (val_x < CHAR_MIN || val_x > CHAR_MAX)
 		std::cout << "char: Impossible" << std::endl;
 	else if (c < 32 || c > 126)
@@ -166,11 +160,11 @@ void convertDouble(const std::string &str)
 	else
 		std::cout << "char: '" << c << "'" << std::endl;
 
+
 	if (val_x < static_cast<double>(INT_MIN) || val_x > static_cast<double>(INT_MAX))
-		std::cout << "int: Non displayable" << std::endl;
+		std::cout << "int: Impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(val_x) << std::endl;
-
 
 
     if (val_x < -FLT_MAX || val_x > FLT_MAX)
@@ -180,9 +174,10 @@ void convertDouble(const std::string &str)
 	else
 		std::cout << "float: " << static_cast<float>(val_x) << "f" << std::endl;
 
+
 	if (val_x < -DBL_MAX || val_x > DBL_MAX)
 	    std::cout << "double: Impossible" << std::endl;
-	if (val_x - static_cast<int>(val_x) == 0)
+	else if (val_x - static_cast<int>(val_x) == 0)
 		std::cout << "double: " << static_cast<double>(val_x) << ".0" << std::endl;
 	else
 		std::cout << "double: " << static_cast<double>(val_x) << std::endl;
@@ -308,30 +303,29 @@ int isElse(std::string str)
 
 void ScalarConverter::convert(std::string str)
 {
-	std::setprecision(20);
+	if (str.size() <= 0)
+	{
+		std::cout << "Empty arg" << std::endl;
+		return ;
+	}
 	if (isChar(str) == 0)
 	{
-		std::cout << "Char" << std::endl;
 		convertChar(str);
 	}
 	else if (isInt(str) == 0)
 	{
-		std::cout << "Int" << std::endl;
 		convertInt(str);
 	}
 	else if (isFloat(str) == 0)
 	{
-		std::cout << "Float" << std::endl;
 		convertFloat(str);
 	}
 	else if (isDouble(str) == 0)
 	{
-		std::cout << "Double" << std::endl;
 		convertDouble(str);
 	}
 	else
 	{
-		std::cout << "Autre" << std::endl;
 		isElse(str);
 	}
 }
