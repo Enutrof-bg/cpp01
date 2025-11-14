@@ -10,7 +10,7 @@ Array<T>::Array(unsigned int n) : elements(NULL), len(n)
 {
 	if (n > 0)
 	{
-			elements = new T[N]();
+		elements = new T[n]();
 	}
 }
 
@@ -21,13 +21,13 @@ Array<T>::~Array()
 }
 
 template <typename T>
-Array<T>::Array(const Array &copy): elements(NULL), len(0)
+Array<T>::Array(const Array &copy): elements(NULL), len(copy.len)
 {
 	if (len > 0)
 	{
 		elements = new T[len]();
 		for (unsigned int i = 0; i < len; i++)
-			elements[i] = other.elements[i];
+			elements[i] = copy.elements[i];
 	}
 }
 
