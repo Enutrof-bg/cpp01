@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <limits>
+#include <algorithm>
 
 class Span
 {
@@ -18,9 +20,9 @@ public:
 	Span &operator=(const Span &other);
 
 	void addNumber(int val);
-	// int shortestSpan();
-	// int longestSPan();
-	// void addMember();
+	size_t shortestSpan();
+	size_t longestSpan();
+	void addMember(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 	void ft_print();
 
 	class NumberFull : public std::exception

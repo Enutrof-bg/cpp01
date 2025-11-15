@@ -1,7 +1,6 @@
 #include "Span.hpp"
 
-
-Span::Span()
+Span::Span(): max(0), nbrVal(0)
 {
 }
 
@@ -12,19 +11,21 @@ Span::Span(unsigned int n): max(n), nbrVal(0)
 
 Span::~Span()
 {
-
 }
 
-Span::Span(const Span &copy)
+Span::Span(const Span &copy)/*:max(copy.max), nbrVal(copy.nbrVal), v1(copy.v1)*/
 {
 	*this = copy;
 }
 
 Span &Span::operator=(const Span &other)
 {
-	(void)other;
-	// max = other.max;
-	// nbrVal = other.nbrVal;
+	if (this != &other)
+	{
+		max = other.max;
+		nbrVal = other.nbrVal;
+		v1 = other.v1;
+	}
 	return *this;
 }
 
@@ -35,6 +36,60 @@ void Span::addNumber(int val)
 	v1.push_back(val);
 	nbrVal++;
 }
+
+size_t Span::shortestSpan()
+{
+	if (nbrVal < 2)
+		throw std::runtime_error("Span too small ;)");
+	std::vector<int> cpy = v1;
+	std::sort(cpy.begin(), cpy.end());
+	size_t temp = std::numeric_limits<size_t>::max();
+	
+	std::vector<int>::iterator it = cpy.begin();
+	std::vector<int>::iterator next = cpy.begin();
+	next++;
+	for (; next != cpy.end(); it++, next++)
+	{
+		size_t span = *next - *it;
+		if (span < temp)
+			temp = span;
+	}
+	return (temp);
+
+}
+
+size_t Span::longestSpan()
+{
+	if (nbrVal < 2)
+		throw std::runtime_error("Span too small ;)");
+	// std::vector<int> cpy = v1;
+	// std::sort(cpy.begin(), cpy.end());
+	// size_t temp = std::numeric_limits<size_t>::min();
+	
+	// std::vector<int>::iterator it = cpy.begin();
+	// std::vector<int>::iterator next = cpy.begin();
+	// next++;
+	// for (; next != cpy.end(); it++, next++)
+	// {
+	// 	size_t span = *next - *it;
+	// 	if (span > temp)
+	// 		temp = span;
+	// }
+	int min = *std::min_element(v1.begin(), v1.end());
+    int max_val = *std::max_element(v1.begin(), v1.end());
+    
+    return static_cast<size_t>(max_val - min);
+}
+
+void Span::addMember(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	size_t count = std::distance(begin, end);
+	if (count + nbrVal > max)
+		throw std::runtime_error("Error");
+	v1.insert(v1.end(), begin, end);
+	nbrVal += count;
+}
+
 void Span::ft_print()
 {
 	for (unsigned  i = 0; i < nbrVal; i++)
