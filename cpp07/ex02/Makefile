@@ -14,7 +14,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-FILE = main2.cpp
+FILE = main.cpp
 
 NAME = template
 

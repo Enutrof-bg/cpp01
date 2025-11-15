@@ -14,7 +14,7 @@ int main()
 {
 	std::cout << "Test1" << std::endl;
 	int *a = new(int);
-	std::cout << a << std::endl;
+	std::cout << *a << std::endl;
 	delete a;
 
 	Array<int> arr(5);
