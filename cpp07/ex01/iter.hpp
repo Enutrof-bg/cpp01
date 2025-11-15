@@ -30,16 +30,20 @@
 // 	}
 // }
 
+// template <typename T>
+// void iter(T *arr, std::size_t len, void(*func)(T&))
+// {
+// 	if (!arr || !func)
+// 		return ;
+// 	for (std::size_t i = 0; i < len; i++)
+// 		func(arr[i]);
+// }
+
 template <typename T>
-void iter(T *arr, std::size_t len, void(*func)(T&))
+void iter(T *arr, std::size_t len, void(*func)(const T&))
 {
-	std::cout <<"iter2" << std::endl;
 	if (!arr || !func)
 		return ;
-	std::size_t i = 0;
-	while (i < len)
-	{
+	for (std::size_t i = 0; i < len; i++)
 		func(arr[i]);
-		i++;
-	}
 }

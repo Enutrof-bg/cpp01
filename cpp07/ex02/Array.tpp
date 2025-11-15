@@ -36,13 +36,13 @@ Array<T> &Array<T>::operator=(const Array<T> &other)
 {
 	if (this != &other)
 	{
-		len = other.len;
 		T* temp = NULL;
-		if (len > 0)
+		if (other.len > 0)
 		{
-			temp = new T[len]();
-			for (unsigned int i = 0; i < len; i++)
+			temp = new T[other.len]();
+			for (unsigned int i = 0; i < other.len; i++)
 				temp[i] = other.elements[i];
+			len = other.len;
 		}
 		delete[] elements;
 		elements = temp;
