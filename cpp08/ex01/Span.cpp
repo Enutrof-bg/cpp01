@@ -6,7 +6,6 @@ Span::Span(): max(0), nbrVal(0)
 
 Span::Span(unsigned int n): max(n), nbrVal(0)
 {
-	// std::vector<int> v1(n);
 	v1.reserve(n);
 }
 
@@ -42,10 +41,11 @@ size_t Span::shortestSpan()
 {
 	if (nbrVal < 2)
 		throw std::runtime_error("Span too small ;)");
+
 	std::vector<int> cpy = v1;
 	std::sort(cpy.begin(), cpy.end());
 	size_t temp = std::numeric_limits<size_t>::max();
-	
+
 	std::vector<int>::iterator it = cpy.begin();
 	std::vector<int>::iterator next = cpy.begin();
 	next++;
@@ -63,6 +63,7 @@ size_t Span::longestSpan()
 {
 	if (nbrVal < 2)
 		throw std::runtime_error("Span too small ;)");
+		
 	int min = *std::min_element(v1.begin(), v1.end());
     int max_val = *std::max_element(v1.begin(), v1.end());
     
