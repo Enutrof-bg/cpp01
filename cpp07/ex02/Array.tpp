@@ -42,10 +42,10 @@ Array<T> &Array<T>::operator=(const Array<T> &other)
 			temp = new T[other.len]();
 			for (unsigned int i = 0; i < other.len; i++)
 				temp[i] = other.elements[i];
-			len = other.len;
 		}
 		delete[] elements;
 		elements = temp;
+		len = other.len;
 	}
 	return *this;
 }
