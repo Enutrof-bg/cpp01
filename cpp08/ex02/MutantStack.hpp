@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <stack>
 
+template<typename T>
 class MutantStack
 {
 private:

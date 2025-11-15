@@ -6,16 +6,17 @@ Span::Span(): max(0), nbrVal(0)
 
 Span::Span(unsigned int n): max(n), nbrVal(0)
 {
-	std::vector<int> v1(n);
+	// std::vector<int> v1(n);
+	v1.reserve(n);
 }
 
 Span::~Span()
 {
 }
 
-Span::Span(const Span &copy)/*:max(copy.max), nbrVal(copy.nbrVal), v1(copy.v1)*/
+Span::Span(const Span &copy):max(copy.max), nbrVal(copy.nbrVal), v1(copy.v1)
 {
-	*this = copy;
+	// *this = copy;
 }
 
 Span &Span::operator=(const Span &other)
@@ -62,19 +63,6 @@ size_t Span::longestSpan()
 {
 	if (nbrVal < 2)
 		throw std::runtime_error("Span too small ;)");
-	// std::vector<int> cpy = v1;
-	// std::sort(cpy.begin(), cpy.end());
-	// size_t temp = std::numeric_limits<size_t>::min();
-	
-	// std::vector<int>::iterator it = cpy.begin();
-	// std::vector<int>::iterator next = cpy.begin();
-	// next++;
-	// for (; next != cpy.end(); it++, next++)
-	// {
-	// 	size_t span = *next - *it;
-	// 	if (span > temp)
-	// 		temp = span;
-	// }
 	int min = *std::min_element(v1.begin(), v1.end());
     int max_val = *std::max_element(v1.begin(), v1.end());
     
@@ -85,7 +73,7 @@ void Span::addMember(std::vector<int>::iterator begin, std::vector<int>::iterato
 {
 	size_t count = std::distance(begin, end);
 	if (count + nbrVal > max)
-		throw std::runtime_error("Error");
+		throw Span::NumberFull();
 	v1.insert(v1.end(), begin, end);
 	nbrVal += count;
 }
