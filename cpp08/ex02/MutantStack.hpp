@@ -16,8 +16,13 @@ public:
 	MutantStack(const MutantStack &copy);
 	MutantStack &operator=(const MutantStack &other);
 
-	typename MutantStack<T>::iterator MutantStack<T>::begin();
-	typename MutantStack<T>::iterator MutantStack<T>::end();
+	typedef typename std::deque<T>::iterator iterator;
+
+	// typename MutantStack<T>::iterator MutantStack<T>::begin();
+	// typename MutantStack<T>::iterator MutantStack<T>::end();
+
+	iterator begin();
+	iterator end();
 };
 
 #include "MutantStack.tpp"
