@@ -1,4 +1,5 @@
 #include "Array.hpp"
+#include <limits>
 
 template <typename T>
 Array<T>::Array() : elements(NULL), len(0)
