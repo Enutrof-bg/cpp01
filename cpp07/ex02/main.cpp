@@ -13,42 +13,100 @@ void ft_print(T &arg)
 int main()
 {
 	std::cout << "Test1" << std::endl;
-	int *a = new int();
-	std::cout << *a << std::endl;
-	delete a;
-
-	Array<int> arr(5);
-	for (unsigned int i = 0; i < arr.size(); i++)
+	try
 	{
-		arr[i] = i;
-	}
-	ft_print(arr);
+		int *a = new int();
+		std::cout << *a << std::endl;
+		delete a;
 
-	std::cout << "\nTest2" << std::endl;
-	Array<std::string> arrStr(3);
-	arrStr[0] = "Hello";
-	arrStr[1] = "Bonjour";
-	arrStr[2] = "TEST";
-	ft_print(arrStr);
-
-	std::cout << "\nTest3" << std::endl;
-	Array<int> newArr = arr;
-	ft_print(newArr);
-	newArr[0] = 42;
-
-	ft_print(arr);
-	ft_print(newArr);
-	ft_print(arr);
+		Array<int> arr(5);
+		for (unsigned int i = 0; i < arr.size(); i++)
+		{
+			arr[i] = i;
+		}
+		ft_print(arr);
 	
-	std::cout << "\nTest4" << std::endl;
-	Array<int> newArr2(arr);
-	newArr2[0] = 999;
-	ft_print(newArr2);
-	ft_print(arr);
+		std::cout << "\nTest2" << std::endl;
+		Array<std::string> arrStr(3);
+		arrStr[0] = "Hello";
+		arrStr[1] = "Bonjour";
+		arrStr[2] = "TEST";
+		ft_print(arrStr);
 
+		std::cout << "\nTest3" << std::endl;
+		Array<int> newArr = arr;
+		ft_print(newArr);
+		newArr[0] = 42;
+
+		ft_print(arr);
+		ft_print(newArr);
+		ft_print(arr);
+		
+		std::cout << "\nTest4" << std::endl;
+		Array<int> newArr2(arr);
+		newArr2[0] = 999;
+		ft_print(newArr2);
+		ft_print(arr);
+	}	
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception erreur: " << e.what() << std::endl;
+	}
 
 
 	std::cout << "\nTest5" << std::endl;
+	try
+	{
+	Array<double> doubles(4);
+	doubles[0] = 3.14;
+	doubles[1] = 2.71;
+	doubles[2] = 1.41;
+	doubles[3] = 1.73;
+	ft_print(doubles);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception erreur: " << e.what() << std::endl;
+	}
+
+	std::cout << "\nTest5" << std::endl;
+	try
+	{
+		Array<char> chars(5);
+		chars[0] = 'H';
+		chars[1] = 'e';
+		chars[2] = 'l';
+		chars[3] = 'l';
+		chars[4] = 'o';
+		ft_print(chars);
+	}	
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception erreur: " << e.what() << std::endl;
+	}
+
+	std::cout << "\nTest6" << std::endl;
+	try
+	{
+		Array<float> floats(3);
+		floats[0] = 1.1f;
+		floats[1] = 2.2f;
+		floats[2] = 3.3f;
+
+		Array<float> floatsCopy(floats);
+		floatsCopy[0] = 99.9f;
+		std::cout << "Original:" << std::endl;
+		ft_print(floats);
+		std::cout << "Copie:" << std::endl;
+		ft_print(floatsCopy);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception erreur: " << e.what() << std::endl;
+	}
+
+
+	std::cout << "\nTest7" << std::endl;
 	try {
 		Array<int> a(10);
 		for (unsigned int i = 0; i < a.size(); i++)
@@ -78,7 +136,7 @@ int main()
 		return 1;
 	}
 		
-	std::cout << "\nTest6" << std::endl;
+	std::cout << "\nTest9" << std::endl;
 	try {
 		Array<int> a(5);
 		Array<int> b(10);
