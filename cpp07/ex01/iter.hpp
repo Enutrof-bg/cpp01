@@ -3,65 +3,30 @@
 #include <iostream>
 #include <string>
 
-// template <typename T1, typename T2>
-// void iter(T1 *arr, std::size_t len, void(*f)(T2 const &f))
-// {
-// 	std::cout <<"iter1" << std::endl;
-// 	if (!arr || !f)
-// 		return ;
-// 	std::size_t i = 0;
-// 	while (i < len)
-// 	{
-// 		f(arr[i]);
-// 		i++;
-// 	}
-// }
 
-// template <typename T, typename T2>
-// void iter(T *arr, size_t len, void(*f)(T2 &))
-// {
-// 	if (!arr || !f)
-// 		return ;
-// 	size_t i = 0;
-// 	while (i < len)
-// 	{
-// 		f(arr[i]);
-// 		i++;
-// 	}
-// }
-
-template <typename T>
-void iter(T *arr, std::size_t len, void(*func)(T&))
+template <typename T, typename F>
+void iter(T *arr, std::size_t len, F func)
 {
-	if (!arr || !func)
-		return ;
-	for (std::size_t i = 0; i < len; i++)
-		func(arr[i]);
+    if (!arr || !func)
+        return;
+    for (std::size_t i = 0; i < len; i++)
+        func(arr[i]);
 }
 
-template <typename T>
-void iter(T *arr, std::size_t len, void(*func)(const T&))
-{
-	if (!arr || !func)
-		return ;
-	for (std::size_t i = 0; i < len; i++)
-		func(arr[i]);
-}
-
-// template <typename T, typename F>
-// void iter(T *arr, std::size_t len, F func)
+// template <typename T>
+// void iter(T *arr, std::size_t len, void(*func)(const T&))
 // {
-//     if (!arr)
-//         return;
-//     for (std::size_t i = 0; i < len; i++)
-//         func(arr[i]);
+// 	if (!arr || !func)
+// 		return ;
+// 	for (std::size_t i = 0; i < len; i++)
+// 		func(arr[i]);
 // }
 
-// template <typename T, typename F>
-// void iter(const T *arr, std::size_t len, F func)
+// template <typename T>
+// void iter(T *arr, std::size_t len, void(*func)(T&))
 // {
-//     if (!arr)
-//         return;
-//     for (std::size_t i = 0; i < len; i++)
-//         func(arr[i]);
+// 	if (!arr || !func)
+// 		return ;
+// 	for (std::size_t i = 0; i < len; i++)
+// 		func(arr[i]);
 // }
