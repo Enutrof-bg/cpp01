@@ -16,7 +16,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 FILE = main.cpp BitcoinExchange.cpp
 
-NAME = btc_to_the_moon
+NAME = btc
 
 SRC = ${FILE:.cpp=.o}
 
@@ -32,7 +32,7 @@ clean:
 	rm -f main.o BitcoinExchange.o
 
 fclean:clean
-	rm -f btc_to_the_moon
+	rm -f btc
 
 re:fclean all
 
