@@ -26,18 +26,21 @@ int isDigit(char c)
 
 double oper(std::string op, double a, double b)
 {
-	double res = -1.0;
-	if (op == "+")
-		res = a + b;
-	else if (op == "-")
-		res = a - b;
-	else if (op == "*")
-		res = a * b;
-	else if (op == "/")
-		res = a / b;
-	// std::cout << "op:" << op << " a:"<< a<< " b:"<< b<<std::endl;
-	// std::cout << "resHERE:" << res << std::endl;
-	return res;
+	switch(op[0])
+	{
+		case '+':
+			return (a + b);
+		case '-':
+			return (a - b);
+		case '*':
+			return (a * b);
+		case '/':
+			if (b == 0)
+				throw std::runtime_error("Error: Division par 0");
+			return (a / b);
+		default :
+			throw std::runtime_error("Error: Wrong operator");
+	}
 }
 
 void push_pop(std::string temp, std::stack<double> &s)
