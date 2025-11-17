@@ -11,6 +11,7 @@ int main()
 	num.push_back(50);
 	for (int i = 0; i < 5; i++)
 		std::cout << num[i] << std::endl;
+		
 	try
 	{
 		std::cout << easyfind(num, 5) << std::endl;
