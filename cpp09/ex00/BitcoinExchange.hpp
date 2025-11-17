@@ -2,3 +2,17 @@
 
 #include <string>
 #include <iostream>
+#include <map>
+#include <algorithm>
+#include <fstream>
+
+class BitcoinExchange
+{
+private:
+	BitcoinExchange();
+	~BitcoinExchange();
+	BitcoinExchange(const BitcoinExchange &copy);
+	BitcoinExchange &operator=(const BitcoinExchange &other);
+public:
+	static void mapping(std::string filename);
+};
