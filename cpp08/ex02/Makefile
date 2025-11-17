@@ -16,7 +16,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 FILE = main.cpp
 
-NAME = span
+NAME = mutant
 
 SRC = ${FILE:.cpp=.o}
 
@@ -32,7 +32,7 @@ clean:
 	rm -f main.o Span.o
 
 fclean:clean
-	rm -f span
+	rm -f mutant
 
 re:fclean all
 

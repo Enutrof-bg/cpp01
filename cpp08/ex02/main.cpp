@@ -23,6 +23,10 @@ int main()
 	std::cout << *it << std::endl;
 	++it;
 	}
-	// std::stack<int> s(mstack);
+
+	std::stack<int> s(mstack);
+	std::cout << "top:"<<s.top() << std::endl;
+
+	// std::cout << easyfind(mstack, 5) << std::endl;
 	return 0;
 }

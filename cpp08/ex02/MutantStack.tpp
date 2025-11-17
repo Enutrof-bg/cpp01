@@ -20,11 +20,23 @@ MutantStack<T> &MutantStack<T>::operator=(const MutantStack &other)
 	(void)other;
 }
 
+// template <typename T>
+// typename MutantStack<T>::iterator MutantStack<T>::begin()
+// {
+// 	return this->c.begin();
+// }
+
 template <typename T>
-typename MutantStack<T>::iterator MutantStack<T>::begin()
+typename std::deque<T>::iterator MutantStack<T>::begin()
 {
 	return this->c.begin();
 }
+
+// template <typename T>
+// typename MutantStack<T>::iterator MutantStack<T>::end()
+// {
+// 	return this->c.end();
+// }
 
 template <typename T>
 typename MutantStack<T>::iterator MutantStack<T>::end()
