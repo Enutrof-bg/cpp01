@@ -79,10 +79,18 @@ void Span::addMember(std::vector<int>::iterator begin, std::vector<int>::iterato
 	nbrVal += count;
 }
 
+// void displayVal(int i)
+// {
+// 	std::cout << i << std::endl;
+// }
+
 void Span::ft_print()
 {
-	for (unsigned  i = 0; i < nbrVal; i++)
-		std::cout << v1[i] << std::endl;
+	for (std::vector<int>::iterator it = v1.begin(); it != v1.end(); it++)
+		std::cout << *it << std::endl;
+	// for (unsigned  i = 0; i < nbrVal; i++)
+		// std::cout << v1[i] << std::endl;
+	// for_each(v1.begin(), v1.end(), displayVal);
 }
 
 const char * Span::NumberFull::what() const throw()

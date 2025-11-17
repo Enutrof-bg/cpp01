@@ -9,9 +9,9 @@
 class Span
 {
 private:
-	std::vector<int> v1;
 	unsigned int max;
 	unsigned int nbrVal;
+	std::vector<int> v1;
 public:
 	Span();
 	Span(unsigned int n);
