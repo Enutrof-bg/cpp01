@@ -3,7 +3,11 @@
 int main(int argc, char **argv)
 {
 	if (argc != 2)
+	{
 		std::cout << "Erreur: 2 arg excepted" << std::endl;
+		return (1);
+	}
+	
 	double res;
 	try
 	{

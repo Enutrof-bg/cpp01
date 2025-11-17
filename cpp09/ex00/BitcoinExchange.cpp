@@ -88,8 +88,30 @@ void ft_check_date(std::string date)
 	if (day > max_days)
 		throw std::runtime_error("Error: wrong date");
 }
+double valueConverted(double value, std::string date, std::map<std::string, double> &data)
+{
+	double res;
+	(void)res;
+	(void)value;
+	(void)data;
+	double last_save;
 
-void readInput(std::map<std::string, double> &tab, std::string filename)
+	std::map<std::string, double>::iterator it;
+	for (it = data.begin(); it != data.end(); it++)
+	{
+		last_save = value * it->second;
+		// std::cout <<"TEST1::'" << it->first << "'" << date<< std::endl;
+		if (it->first >= date)
+		{
+			// std::cout <<"TEST2::'" << it->first << "'" << date<< std::endl;
+			return (last_save);
+		}
+	}
+
+	return (0);
+}
+
+void readInput(std::map<std::string, double> &tab, std::string filename, std::map<std::string, double> &data)
 {
 	(void)tab;
 	std::ifstream input;
@@ -106,6 +128,8 @@ void readInput(std::map<std::string, double> &tab, std::string filename)
 	{
 		if (tab_key_val.empty())
 			continue;
+		if (tab_key_val == "date | value")
+			continue;
 		// std::cout << "test:"<<tab_key_val << std::endl;
 		tab_pos = tab_key_val.find("|");
 		if (tab_pos == std::string::npos)
@@ -113,9 +137,6 @@ void readInput(std::map<std::string, double> &tab, std::string filename)
 			std::cout << "Error: bad input => " << tab_key_val << std::endl;
 			continue;
 		}
-		// tab_date = tab_key_val.substr(0, tab_pos);
-
-		// tab_value_str = tab_key_val.substr(tab_pos + 1);
 
 		try
 		{
@@ -135,10 +156,13 @@ void readInput(std::map<std::string, double> &tab, std::string filename)
 			continue;
 		}
 
-		// tab_value = std::atof(tab_value_str.c_str());
-
-		std::cout << tab_date << "|" << tab_value<< std::endl;
-
+		// std::cout << tab_date << "|" << tab_value<< std::endl;
+		tab_pos = tab_date.find(" ");
+		if(tab_pos != std::string::npos)
+		{
+			tab_date = tab_date.substr(0, tab_pos);
+		}
+		std::cout <<tab_date << "=> " << tab_value <<" = " << valueConverted(tab_value, tab_date, data) << std::endl;
 		// tab.insert(std::make_pair(tab_date, tab_value));
 	}
 
@@ -157,6 +181,6 @@ void BitcoinExchange::mapping(std::string filename)
 	
 	readCsv(data, "data.csv");
 
-	readInput(tab, filename);
+	readInput(tab, filename, data);
 
 }
