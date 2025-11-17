@@ -88,6 +88,7 @@ void ft_check_date(std::string date)
 	if (day > max_days)
 		throw std::runtime_error("Error: wrong date");
 }
+
 double valueConverted(double value, std::string date, std::map<std::string, double> &data)
 {
 	double res;

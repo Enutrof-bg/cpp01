@@ -4,9 +4,10 @@ int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cout << "Error: 2 arg excepted" << std::endl;
+		std::cout << "Error: filename excepted" << std::endl;
 		return (1);
 	}
+
 	try
 	{
 		std::string filename(argv[1]);
