@@ -42,17 +42,17 @@ public:
 	// typename MutantStack<T>::iterator MutantStack<T>::begin();
 	// typename MutantStack<T>::iterator MutantStack<T>::end();
 
-	iterator begin();
-	iterator end();
+	typename std::deque<T>::iterator begin();
+	typename std::deque<T>::iterator end();
 
-	const_iterator const_begin();
-	const_iterator const_end();
+	typename std::deque<T>::const_iterator begin() const;
+	typename std::deque<T>::const_iterator end() const;
 
-	reverse_iterator reverse_begin();
-	reverse_iterator reverse_end();
+	typename std::deque<T>::reverse_iterator rbegin();
+	typename std::deque<T>::reverse_iterator rend();
 
-	const_reverse_iterator const_reverse_begin();
-	const_reverse_iterator const_reverse_end();
+	typename std::deque<T>::const_reverse_iterator rbegin() const;
+	typename std::deque<T>::const_reverse_iterator rend() const;
 };
 
 #include "MutantStack.tpp"

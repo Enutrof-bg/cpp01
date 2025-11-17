@@ -64,10 +64,10 @@ size_t Span::longestSpan()
 	if (nbrVal < 2)
 		throw std::runtime_error("Span too small ;)");
 		
-	int min = *std::min_element(v1.begin(), v1.end());
+	int min_val = *std::min_element(v1.begin(), v1.end());
     int max_val = *std::max_element(v1.begin(), v1.end());
     
-    return static_cast<size_t>(max_val - min);
+    return static_cast<size_t>(max_val) - static_cast<size_t>(min_val);
 }
 
 void Span::addMember(std::vector<int>::iterator begin, std::vector<int>::iterator end)

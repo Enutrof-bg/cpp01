@@ -91,8 +91,8 @@ int main()
 		mstack.push(4);
 		mstack.push(5);
 		std::cout << "reverse:" << std::endl;
-		MutantStack<int>::reverse_iterator rit = mstack.reverse_begin();
-		MutantStack<int>::reverse_iterator rite = mstack.reverse_end();
+		MutantStack<int>::reverse_iterator rit = mstack.rbegin();
+		MutantStack<int>::reverse_iterator rite = mstack.rend();
 
 		while (rit != rite)
 		{
@@ -108,8 +108,8 @@ int main()
 		mstack.push(20);
 		mstack.push(30);
 		std::cout << "const:" << std::endl;
-		MutantStack<int>::const_iterator cit = mstack.const_begin();
-		MutantStack<int>::const_iterator cite = mstack.const_end();
+		MutantStack<int>::const_iterator cit = mstack.begin();
+		MutantStack<int>::const_iterator cite = mstack.end();
 		
 		while (cit != cite)
 		{
@@ -126,8 +126,8 @@ int main()
 		mstack.push(300);
 		
 		std::cout << "const reverse:" << std::endl;
-		MutantStack<int>::const_reverse_iterator crit = mstack.const_reverse_begin();
-		MutantStack<int>::const_reverse_iterator crite = mstack.const_reverse_end();
+		MutantStack<int>::const_reverse_iterator crit = mstack.rbegin();
+		MutantStack<int>::const_reverse_iterator crite = mstack.rend();
 		
 		while (crit != crite)
 		{
