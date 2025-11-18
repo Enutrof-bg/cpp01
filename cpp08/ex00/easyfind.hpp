@@ -20,7 +20,7 @@ int easyfind(const T &container, int val)
 }
 
 // template <typename T>
-// int easyfind(T container, int val)
+// int easyfind(const T &container, int val)
 // {
 // 	int i = 0;
 // 	while (container[i])
