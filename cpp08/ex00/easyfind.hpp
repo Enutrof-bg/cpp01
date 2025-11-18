@@ -31,3 +31,8 @@ int easyfind(const T &container, int val)
 // 	}
 // 	return (-1);
 // }
+
+
+// typedef int caca;
+
+// caca x = 10;
