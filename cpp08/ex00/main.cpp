@@ -118,11 +118,4 @@ int main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-
-	// forward_list<int> arr;
-	// arr.insert(10);
-	// arr.push_back(20);
-	// arr.push_back(30);
-	// arr.push_back(40);
-	// arr.push_back(50);
 }
