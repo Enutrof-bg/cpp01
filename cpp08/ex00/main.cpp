@@ -92,11 +92,14 @@ int main()
 
 	std::cout << "\nTest4" << std::endl;
 	std::set<int> set;
-	set.insert(10);
-	set.insert(20);
-	set.insert(30);
-	set.insert(40);
 	set.insert(50);
+	set.insert(40);
+	set.insert(30);
+	set.insert(20);
+	set.insert(10);
+	set.insert(30);
+	set.insert(30);
+	set.insert(30);
 	set.insert(30);
 	for (std::set<int>::iterator it = set.begin(); it != set.end(); it++)
 		std::cout << *it << std::endl;

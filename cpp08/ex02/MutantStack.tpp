@@ -24,7 +24,7 @@ MutantStack<T> &MutantStack<T>::operator=(const MutantStack &other)
 }
 
 template <typename T>
-typename std::deque<T>::iterator MutantStack<T>::begin()
+typename MutantStack<T>::iterator MutantStack<T>::begin()
 {
 	return this->c.begin();
 }
@@ -36,7 +36,7 @@ typename MutantStack<T>::iterator MutantStack<T>::end()
 }
 
 template <typename T>
-typename std::deque<T>::const_iterator MutantStack<T>::begin() const
+typename MutantStack<T>::const_iterator MutantStack<T>::begin() const
 {
 	return this->c.begin();
 }
@@ -48,7 +48,7 @@ typename MutantStack<T>::const_iterator MutantStack<T>::end() const
 }
 
 template <typename T>
-typename std::deque<T>::reverse_iterator MutantStack<T>::rbegin()
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin()
 {
 	return this->c.rbegin();
 }
@@ -60,7 +60,7 @@ typename MutantStack<T>::reverse_iterator MutantStack<T>::rend()
 }
 
 template <typename T>
-typename std::deque<T>::const_reverse_iterator MutantStack<T>::rbegin() const
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rbegin() const
 {
 	return this->c.rbegin();
 }

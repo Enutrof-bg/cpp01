@@ -26,8 +26,8 @@ int main()
 			std::cout << *it << std::endl;
 			++it;
 		}
-		std::stack<int> s(mstack);
-		std::cout << "top: " << s.top() << std::endl;
+		// std::vector<int> s(mstack);
+		// std::cout << "top: " << s.top() << std::endl;
 	}
 
 	std::cout << "\nTest2" << std::endl;

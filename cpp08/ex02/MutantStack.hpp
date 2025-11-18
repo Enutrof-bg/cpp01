@@ -36,11 +36,7 @@ public:
 	typedef typename std::deque<T>::const_iterator const_iterator;
 	typedef typename std::deque<T>::reverse_iterator reverse_iterator;
 	typedef typename std::deque<T>::const_reverse_iterator const_reverse_iterator;
-	// typedef typename std::deque<T>::iterator iterator;
-	// typedef typename std::deque<T>::iterator iterator;
-
-	// typename MutantStack<T>::iterator MutantStack<T>::begin();
-	// typename MutantStack<T>::iterator MutantStack<T>::end();
+	
 
 	typename std::deque<T>::iterator begin();
 	typename std::deque<T>::iterator end();
