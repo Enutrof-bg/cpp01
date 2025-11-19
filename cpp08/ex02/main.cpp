@@ -26,8 +26,8 @@ int main()
 			std::cout << *it << std::endl;
 			++it;
 		}
-		// std::vector<int> s(mstack);
-		// std::cout << "top: " << s.top() << std::endl;
+		std::stack<int> s(mstack);
+		std::cout << "top: " << s.top() << std::endl;
 	}
 
 	std::cout << "\nTest2" << std::endl;
@@ -235,7 +235,7 @@ int main()
 		}
 		}
 		
-		std::cout << "\nTest12" << std::endl;
+	std::cout << "\nTest12" << std::endl;
 	{
 		MutantStack<std::string> strStack;
 		
@@ -252,7 +252,26 @@ int main()
 			std::cout << *it << std::endl;
 	}
 	
+
 	std::cout << "\nTest13" << std::endl;
+	{
+		MutantStack<double> strStack;
+		
+		strStack.push(1.1);
+		strStack.push(2.2);
+		strStack.push(3.3);
+		strStack.push(4.4);
+		
+		std::cout << "size: " << strStack.size() << std::endl;
+		std::cout << "top: " << strStack.top() << std::endl;
+		
+		std::cout << "\ndouble:" << std::endl;
+		for (MutantStack<double>::iterator it = strStack.begin(); it != strStack.end(); ++it)
+			std::cout << *it << std::endl;
+	}
+
+
+	std::cout << "\nTest14" << std::endl;
 	{
 		MutantStack<int> large;
 		
