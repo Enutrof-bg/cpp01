@@ -72,6 +72,20 @@ void push_pop(std::string temp, std::stack<double> &s)
 	}
 }
 
+void ft_check_str(std::string str)
+{
+	std::string::iterator it;
+	for (it = str.begin(); it != str.end(); it++)
+	{
+		if (isDigit(*it) == 1 && (*it) != ' ')
+			throw std::runtime_error("Error: non valid argument");
+		if (isDigit(*it) == 0 && *(it + 1) != ' ')
+			throw std::runtime_error("Error: non valid argument");
+	}
+	if (isDigit(str[str.size()]) == 1)
+		throw std::runtime_error("Error: non valid argument");
+}
+
 double RPN::calculate(char *argv)
 {
 	std::stack<double> s;
@@ -81,6 +95,7 @@ double RPN::calculate(char *argv)
 	std::string str(argv);
 	std::string limit = " ";
 	std::string temp;
+	ft_check_str(str);
 	// std::string operation = "+-*/";
 	str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
 	// std::cout << str << std::endl;
