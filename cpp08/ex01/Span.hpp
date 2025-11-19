@@ -25,6 +25,8 @@ public:
 	void addMember(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 	void ft_print();
 
+	
+
 	class NumberFull : public std::exception
 	{
 		public:

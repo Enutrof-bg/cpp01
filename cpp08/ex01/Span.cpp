@@ -6,7 +6,7 @@ Span::Span(): max(0), nbrVal(0)
 
 Span::Span(unsigned int n): max(n), nbrVal(0)
 {
-	v1.reserve(n);
+	// v1.reserve(n);
 }
 
 Span::~Span()
@@ -15,7 +15,6 @@ Span::~Span()
 
 Span::Span(const Span &copy):max(copy.max), nbrVal(copy.nbrVal), v1(copy.v1)
 {
-	// *this = copy;
 }
 
 Span &Span::operator=(const Span &other)
