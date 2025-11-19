@@ -24,6 +24,17 @@ int isDigit(char c)
 	return (1);
 }
 
+int isOperat(char c)
+{
+	std::string operation = "+-*/";
+	for(std::string::iterator it = operation.begin(); it != operation.end(); it++)
+	{
+		if (c == *it)
+			return (0);
+	}
+	return (1);
+}
+
 double oper(std::string op, double a, double b)
 {
 	switch(op[0])
@@ -77,13 +88,14 @@ void ft_check_str(std::string str)
 	std::string::iterator it;
 	for (it = str.begin(); it != str.end(); it++)
 	{
-		if (isDigit(*it) == 1 && (*it) != ' ')
+		if ((isDigit(*it) == 1 && isOperat(*it) == 1)&& (*it) != ' ')
 			throw std::runtime_error("Error: non valid argument");
-		if (isDigit(*it) == 0 && *(it + 1) != ' ')
+		if ((isDigit(*it) == 0 || isOperat(*it) == 0) && (*(it + 1) != ' ' && *(it+1) != '\0'))
 			throw std::runtime_error("Error: non valid argument");
 	}
-	if (isDigit(str[str.size()]) == 1)
-		throw std::runtime_error("Error: non valid argument");
+	std::cout << "size:" <<str.size() << std::endl;
+	if (!(isDigit(str[str.size() - 1]) == 0 || isOperat(str[str.size() - 1]) == 0))
+		throw std::runtime_error("Error: non valid argumenttest");
 }
 
 double RPN::calculate(char *argv)
