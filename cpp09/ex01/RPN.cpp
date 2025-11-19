@@ -93,9 +93,9 @@ void ft_check_str(std::string str)
 		if ((isDigit(*it) == 0 || isOperat(*it) == 0) && (*(it + 1) != ' ' && *(it+1) != '\0'))
 			throw std::runtime_error("Error: non valid argument");
 	}
-	std::cout << "size:" <<str.size() << std::endl;
+	// std::cout << "size:" <<str.size() << std::endl;
 	if (!(isDigit(str[str.size() - 1]) == 0 || isOperat(str[str.size() - 1]) == 0))
-		throw std::runtime_error("Error: non valid argumenttest");
+		throw std::runtime_error("Error: non valid argument");
 }
 
 double RPN::calculate(char *argv)
@@ -121,7 +121,9 @@ double RPN::calculate(char *argv)
 
 	// std::cout << "size s:" << s.size() << std::endl;
 	if (s.size() != 1)
+	{
 		std::cout << "Error: Stack not empty" << std::endl;
+	}
 	double res = s.top();
 	return (res);
 	// return (0);
