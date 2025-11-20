@@ -53,7 +53,7 @@ double ft_check_value(std::string value)
 	if (res < 0)
 		throw std::runtime_error("Error: not a positive number");
 	if (res > 1000)
-		throw std::runtime_error("Error: too large a number");
+		throw std::runtime_error("Error: value too large");
 	return res;
 }
 
@@ -91,30 +91,26 @@ void ft_check_date(std::string date)
 
 double valueConverted(double value, std::string date, std::map<std::string, double> &data)
 {
-	double res;
-	(void)res;
-	(void)value;
-	(void)data;
 	double last_save;
 
 	std::map<std::string, double>::iterator it;
 	for (it = data.begin(); it != data.end(); it++)
 	{
-		last_save = value * it->second;
+	
 		// std::cout <<"TEST1::'" << it->first << "'" << date<< std::endl;
-		if (it->first >= date)
+		if (it->first > date)
 		{
 			// std::cout <<"TEST2::'" << it->first << "'" << date<< std::endl;
 			return (last_save);
 		}
+		last_save = value * it->second;
 	}
 
-	return (0);
+	return (-1);
 }
 
-void readInput(std::map<std::string, double> &tab, std::string filename, std::map<std::string, double> &data)
+void readInput(std::string filename, std::map<std::string, double> &data)
 {
-	(void)tab;
 	std::ifstream input;
 	input.open(filename.c_str());
 	if (!input)
@@ -176,12 +172,9 @@ void readInput(std::map<std::string, double> &tab, std::string filename, std::ma
 
 void BitcoinExchange::mapping(std::string filename)
 {
-	std::map<std::string, double> tab;
 	std::map<std::string, double> data;
-
 	
 	readCsv(data, "data.csv");
 
-	readInput(tab, filename, data);
-
+	readInput(filename, data);
 }
