@@ -35,7 +35,7 @@ int isOperat(char c)
 	return (1);
 }
 
-double oper(std::string op, double a, double b)
+double oper(const std::string &op, double a, double b)
 {
 	switch(op[0])
 	{
@@ -54,7 +54,7 @@ double oper(std::string op, double a, double b)
 	}
 }
 
-void push_pop(std::string temp, std::stack<double> &s)
+void push_pop(const std::string &temp, std::stack<double> &s)
 {
 	char *endptr;
 	std::string operation = "+-*/";
@@ -64,26 +64,22 @@ void push_pop(std::string temp, std::stack<double> &s)
 	{
 		if (s.size() < 2)
 			throw std::runtime_error("Error: stack size < 2 for operator");
-		// std::cout << "operator:" <<temp << std::endl;
 		double a = s.top();
 		s.pop();
 		double b = s.top();
 		s.pop();
-
 		double res = oper(temp, b, a);
 		s.push(res);
-		// std::cout << "res:" << res << std::endl;
 	}
 	else if (temp.size() != 1 || isDigit(temp[0]) == 1)
 		throw std::runtime_error("Value not a single digit");
 	else
 	{
 		s.push(strtod(temp.c_str(), &endptr));
-		// std::cout <<"value:"<< temp << std::endl;
 	}
 }
 
-void ft_check_str(std::string str)
+void ft_check_str(std::string &str)
 {
 	std::string::iterator it;
 	for (it = str.begin(); it != str.end(); it++)
@@ -93,7 +89,6 @@ void ft_check_str(std::string str)
 		if ((isDigit(*it) == 0 || isOperat(*it) == 0) && (*(it + 1) != ' ' && *(it+1) != '\0'))
 			throw std::runtime_error("Error: non valid argument");
 	}
-	// std::cout << "size:" <<str.size() << std::endl;
 	if (!(isDigit(str[str.size() - 1]) == 0 || isOperat(str[str.size() - 1]) == 0))
 		throw std::runtime_error("Error: non valid argument");
 }
@@ -101,32 +96,18 @@ void ft_check_str(std::string str)
 double RPN::calculate(char *argv)
 {
 	std::stack<double> s;
-	// char *endptr;
-	// std::cout << "test:" << argv << std::endl;
-	
 	std::string str(argv);
-	// std::string limit = " ";
-	// std::string temp;
+
 	ft_check_str(str);
-	// std::string operation = "+-*/";
 	str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
-	// std::cout << str << std::endl;
 	std::string::iterator it;
 	for (it = str.begin(); it != str.end(); it++)
 	{
-		// std::cout << *it << std::endl;
-		// std::string temp(it);
 		push_pop(std::string(1, *it), s);
 	}
-
-	// std::cout << "size s:" << s.size() << std::endl;
 	if (s.size() != 1)
 	{
-		// std::cout << "Error: Stack not empty" << std::endl;
 		throw std::runtime_error("Error: stack not empty at end");
 	}
-	// double res = s.top();
 	return (s.top());
-	// return (0);
-
 }
