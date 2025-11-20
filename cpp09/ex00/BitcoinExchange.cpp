@@ -89,7 +89,7 @@ void ft_check_date(const std::string &date)
 
 double valueConverted(double value, std::string date, std::map<std::string, double> &data)
 {
-	double last_save;
+	double last_save = 0;
 
 	std::map<std::string, double>::iterator it;
 	for (it = data.begin(); it != data.end(); it++)
