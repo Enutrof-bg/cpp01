@@ -47,7 +47,9 @@ void readCsv(std::map<std::string, double> &data, const std::string &filename)
 
 double ft_check_value(const std::string &value)
 {
+	//verifier qu'il n'y a que des chiffres ou espaces
 	double res;
+	
 	res = std::atof(value.c_str());
 	if (res < 0)
 		throw std::runtime_error("Error: not a positive number");
@@ -149,10 +151,18 @@ void readInput(const std::string &filename, std::map<std::string, double> &data)
 		{
 			tab_date = tab_date.substr(0, tab_pos);
 		}
-		convertedvalue = valueConverted(tab_value, tab_date, data);
+		// try
+		// {
+			convertedvalue = valueConverted(tab_value, tab_date, data);
+			std::cout << tab_date << "=> " << tab_value << " = " << convertedvalue << std::endl;
+		// }
+		// catch(std::exception &e)
+		// {
+		// 	std::cout << e.what() << std::endl;
+		// }
 		// std::cout << std::fixed;
 		// std::cout << std::setprecision(2);
-		std::cout << tab_date << "=> " << tab_value << " = " << convertedvalue << std::endl;
+		
 		// std::cout << std::scientific;
 	}
 	input.close();
