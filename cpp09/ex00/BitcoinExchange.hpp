@@ -14,5 +14,5 @@ private:
 	BitcoinExchange(const BitcoinExchange &copy);
 	BitcoinExchange &operator=(const BitcoinExchange &other);
 public:
-	static void mapping(std::string filename);
+	static void mapping(const std::string &filename);
 };

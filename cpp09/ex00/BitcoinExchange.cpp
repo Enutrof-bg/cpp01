@@ -17,7 +17,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 	return *this;
 }
 
-void readCsv(std::map<std::string, double> &data, std::string filename)
+void readCsv(std::map<std::string, double> &data, const std::string &filename)
 {
 	std::string key_val;
 	std::string data_date;
@@ -45,11 +45,10 @@ void readCsv(std::map<std::string, double> &data, std::string filename)
 	data_input.close();
 }
 
-double ft_check_value(std::string value)
+double ft_check_value(const std::string &value)
 {
 	double res;
 	res = std::atof(value.c_str());
-	// std::cout << "res:'" << res << "'"<< std::endl;
 	if (res < 0)
 		throw std::runtime_error("Error: not a positive number");
 	if (res > 1000)
@@ -57,7 +56,7 @@ double ft_check_value(std::string value)
 	return res;
 }
 
-void ft_check_date(std::string date)
+void ft_check_date(const std::string &date)
 {
 	int year;
 	int month;
@@ -68,7 +67,6 @@ void ft_check_date(std::string date)
 	year = atoi(date.substr(0, pos).c_str());
 	month = atoi(date.substr(pos +1, pos+3).c_str());
 	day = atoi(date.substr(pos +4, pos+6).c_str());
-	// std::cout << "year:"<<year<< "month:" <<month << "day:"<<day<< std::endl;
 	if (month > 12 || month < 1 || year < 0 || day < 0)
 		throw std::runtime_error("Error: wrong date");
 	int max_days;
@@ -109,7 +107,7 @@ double valueConverted(double value, std::string date, std::map<std::string, doub
 	return (-1);
 }
 
-void readInput(std::string filename, std::map<std::string, double> &data)
+void readInput(const std::string &filename, std::map<std::string, double> &data)
 {
 	std::ifstream input;
 	input.open(filename.c_str());
@@ -119,6 +117,7 @@ void readInput(std::string filename, std::map<std::string, double> &data)
 	std::string tab_date;
 	std::string tab_value_str;
 	double tab_value;
+	double convertedvalue;
 	size_t tab_pos;
 
 	while(getline(input, tab_key_val))
@@ -127,50 +126,36 @@ void readInput(std::string filename, std::map<std::string, double> &data)
 			continue;
 		if (tab_key_val == "date | value")
 			continue;
-		// std::cout << "test:"<<tab_key_val << std::endl;
 		tab_pos = tab_key_val.find("|");
 		if (tab_pos == std::string::npos)
 		{
 			std::cout << "Error: bad input => " << tab_key_val << std::endl;
 			continue;
 		}
-
 		try
 		{
 			tab_date = tab_key_val.substr(0, tab_pos);
 			ft_check_date(tab_date);
 			tab_value_str = tab_key_val.substr(tab_pos + 1);
 			tab_value = ft_check_value(tab_value_str);
-
-			// std::cout << "tab_date:'" <<tab_date <<"'"<< std::endl;
-			// std::cout << "tab_value_str '" << tab_value_str << "'" << std::endl;
-			// std::cout <<  "tab_value" <<tab_value << std::endl;
-			// tab.insert(std::make_pair(tab_date, tab_value));
 		}
 		catch(std::exception &e)
 		{
 			std::cout << e.what() << std::endl;
 			continue;
 		}
-
-		// std::cout << tab_date << "|" << tab_value<< std::endl;
 		tab_pos = tab_date.find(" ");
 		if(tab_pos != std::string::npos)
 		{
 			tab_date = tab_date.substr(0, tab_pos);
 		}
-		std::cout <<tab_date << "=> " << tab_value <<" = " << valueConverted(tab_value, tab_date, data) << std::endl;
-		// tab.insert(std::make_pair(tab_date, tab_value));
+		convertedvalue = valueConverted(tab_value, tab_date, data);
+		std::cout << tab_date << "=> " << tab_value << " = " << convertedvalue << std::endl;
 	}
-
-	// for(std::map<std::string, double>::iterator it = tab.begin(); it != tab.end(); it++)
-	// {
-	// 	std::cout << it->first << "|"<< it->second << std::endl;
-	// }
 	input.close();
 }
 
-void BitcoinExchange::mapping(std::string filename)
+void BitcoinExchange::mapping(const std::string &filename)
 {
 	std::map<std::string, double> data;
 	
