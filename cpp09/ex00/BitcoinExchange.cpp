@@ -104,7 +104,7 @@ double valueConverted(double value, std::string date, std::map<std::string, doub
 		last_save = value * it->second;
 	}
 
-	return (-1);
+	return (last_save);
 }
 
 void readInput(const std::string &filename, std::map<std::string, double> &data)
@@ -150,7 +150,10 @@ void readInput(const std::string &filename, std::map<std::string, double> &data)
 			tab_date = tab_date.substr(0, tab_pos);
 		}
 		convertedvalue = valueConverted(tab_value, tab_date, data);
+		// std::cout << std::fixed;
+		// std::cout << std::setprecision(2);
 		std::cout << tab_date << "=> " << tab_value << " = " << convertedvalue << std::endl;
+		// std::cout << std::scientific;
 	}
 	input.close();
 }
