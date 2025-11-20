@@ -9,7 +9,7 @@ BitcoinExchange::~BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
 {
-	(void)copy;
+	*this = copy;
 }
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 {

@@ -105,8 +105,8 @@ double RPN::calculate(char *argv)
 	// std::cout << "test:" << argv << std::endl;
 	
 	std::string str(argv);
-	std::string limit = " ";
-	std::string temp;
+	// std::string limit = " ";
+	// std::string temp;
 	ft_check_str(str);
 	// std::string operation = "+-*/";
 	str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
@@ -122,10 +122,11 @@ double RPN::calculate(char *argv)
 	// std::cout << "size s:" << s.size() << std::endl;
 	if (s.size() != 1)
 	{
-		std::cout << "Error: Stack not empty" << std::endl;
+		// std::cout << "Error: Stack not empty" << std::endl;
+		throw std::runtime_error("Error: stack not empty at end");
 	}
-	double res = s.top();
-	return (res);
+	// double res = s.top();
+	return (s.top());
 	// return (0);
 
 }
