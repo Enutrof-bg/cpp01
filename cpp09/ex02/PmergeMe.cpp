@@ -23,7 +23,7 @@ void PmergeMeVector::ft_print()
 {
 	for(std::vector<int>::iterator it = v1.begin(); it != v1.end(); it++)
 	{
-		std::cout << *it;		
+		std::cout << *it << std::endl;		
 	}
 	std::cout << std::endl;
 }
