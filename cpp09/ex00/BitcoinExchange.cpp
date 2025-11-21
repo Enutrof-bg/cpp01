@@ -52,24 +52,56 @@ void readCsv(std::map<std::string, double> &data, const std::string &filename)
 	data_input.close();
 }
 
-//verifier qu'il n'y a que des chiffres ou espaces
 double ft_check_value(const std::string &value)
 {
 	double res;
-	// std::cout << value << std::endl;
+
 	res = std::atof(value.c_str());
 	if (res < 0)
 		throw std::runtime_error("Error: not a positive number");
 	if (res > 1000)
 		throw std::runtime_error("Error: value too large");
-	
 	for(std::string::const_iterator it = value.begin(); it != value.end(); it++)
 	{
-		// std::cout << value << std::endl;
 		if (isDigit(*it) == 1 && *it != ' ' && *it != '.')
 			throw std::runtime_error("Error: non numeric value => " + value);
 	}
 	return res;
+}
+
+// trim from end of string (right)
+inline std::string& rtrim(std::string& s, const char* t)
+{
+    s.erase(s.find_last_not_of(t) + 1);
+    return s;
+}
+
+// trim from beginning of string (left)
+inline std::string& ltrim(std::string& s, const char* t)
+{
+    s.erase(0, s.find_first_not_of(t));
+    return s;
+}
+
+// trim from both ends of string (right then left)
+inline std::string& trim(std::string& s, const char* t)
+{
+    return ltrim(rtrim(s, t), t);
+}
+std::string ft_trim_str(std::string &tab_date)
+{
+	trim(tab_date, " ");
+	for(std::string::iterator it = tab_date.begin(); it != tab_date.end(); it++)
+	{
+		if (isDigit(*it) == 1 && *it != ' ' && *it != '-')
+			throw std::runtime_error("Error: Unauthorized char for date => " + tab_date);
+	}
+	for(std::string::iterator it = tab_date.begin(); it != tab_date.end(); it++)
+	{
+		if ((isDigit(*it) == 0 ||  *it == '-') && ((isDigit(*(it + 1))) == 1 && (*(it + 1) != '-') && *(it+1)!='\0'))
+			throw std::runtime_error("Error: Unauthorized char for date => " + tab_date);
+	}
+	return tab_date;
 }
 
 void ft_check_date(const std::string &date)
@@ -79,23 +111,15 @@ void ft_check_date(const std::string &date)
 	int day;
 	size_t pos;
 	size_t pos2;
-	// size_t pos3;
 
-	// std::cout << "date:" << date << std::endl;
-
+	if (date.size() != 10)
+		throw std::runtime_error("Error: date invalid YYYY-MM-DD => " + date);
 	pos = date.find("-");
-	// if (pos == std::string::npos)
-	// 	throw std::runtime_error("Error: wrong date test1");
-
+	if (pos != 4)
+		throw std::runtime_error("Error: date invalid YYYY-MM-DD => " + date);
 	pos2 = date.find("-", pos + 1);
-	// if (pos2 == std::string::npos)
-	// 	throw std::runtime_error("Error: wrong date test2");
-
-	// // std::cout << distance(0, pos) << std::endl;
-	// pos3 = date.find("|", pos2 + 1);
-	// if (pos2 == std::string::npos)
-	// 	throw std::runtime_error("Error: wrong date test3");
-	// std::cout << date << std::endl;
+	if (pos2 != 7)
+		throw std::runtime_error("Error: date invalid YYYY-MM-DD => " + date);
 
 	year = atoi(date.substr(0, pos).c_str());
 	month = atoi(date.substr(pos +1, pos2).c_str());
@@ -127,36 +151,13 @@ double valueConverted(double value, std::string date, std::map<std::string, doub
 	std::map<std::string, double>::iterator it;
 	for (it = data.begin(); it != data.end(); it++)
 	{
-	
-		// std::cout <<"TEST1::'" << it->first << "'" << date<< std::endl;
 		if (it->first > date)
 		{
-			// std::cout <<"TEST2::'" << it->first << "'" << date<< std::endl;
 			return (last_save);
 		}
 		last_save = value * it->second;
 	}
-
 	return (last_save);
-}
-
-std::string ft_trim_str(std::string &tab_date)
-{
-
-	tab_date.erase(std::remove(tab_date.begin(), tab_date.end(), ' '), tab_date.end());
-	// std::cout << "tab date:" << tab_date << std::endl;
-	for(std::string::iterator it = tab_date.begin(); it != tab_date.end(); it++)
-	{
-		if (isDigit(*it) == 1 && *it != ' ' && *it != '-')
-			throw std::runtime_error("Error: Unauthorized char for date => " + tab_date);
-	}
-
-	for(std::string::iterator it = tab_date.begin(); it != tab_date.end(); it++)
-	{
-		if ((isDigit(*it) == 0 ||  *it == '-') && ((isDigit(*(it + 1))) == 1 && (*(it + 1) != '-') && *(it+1)!='\0'))
-			throw std::runtime_error("Error: Unauthorized char for date => " + tab_date);
-	}
-	return tab_date;
 }
 
 void readInput(const std::string &filename, std::map<std::string, double> &data)
@@ -226,3 +227,5 @@ void BitcoinExchange::mapping(const std::string &filename)
 
 	readInput(filename, data);
 }
+
+//todo: afficher correctement notation avec 2 decimal
