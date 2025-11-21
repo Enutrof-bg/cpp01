@@ -72,7 +72,6 @@ double ft_check_value(const std::string &value)
 	return res;
 }
 
-
 void ft_check_date(const std::string &date)
 {
 	int year;
@@ -80,17 +79,23 @@ void ft_check_date(const std::string &date)
 	int day;
 	size_t pos;
 	size_t pos2;
+	// size_t pos3;
 
-	std::cout << "date:" << date << std::endl;
+	// std::cout << "date:" << date << std::endl;
 
 	pos = date.find("-");
-	if (pos == std::string::npos)
-		throw std::runtime_error("Error: wrong date test1");
+	// if (pos == std::string::npos)
+	// 	throw std::runtime_error("Error: wrong date test1");
 
 	pos2 = date.find("-", pos + 1);
-	if (pos2 == std::string::npos)
-		throw std::runtime_error("Error: wrong date test2");
+	// if (pos2 == std::string::npos)
+	// 	throw std::runtime_error("Error: wrong date test2");
 
+	// // std::cout << distance(0, pos) << std::endl;
+	// pos3 = date.find("|", pos2 + 1);
+	// if (pos2 == std::string::npos)
+	// 	throw std::runtime_error("Error: wrong date test3");
+	// std::cout << date << std::endl;
 
 	year = atoi(date.substr(0, pos).c_str());
 	month = atoi(date.substr(pos +1, pos2).c_str());
@@ -135,6 +140,25 @@ double valueConverted(double value, std::string date, std::map<std::string, doub
 	return (last_save);
 }
 
+std::string ft_trim_str(std::string &tab_date)
+{
+
+	tab_date.erase(std::remove(tab_date.begin(), tab_date.end(), ' '), tab_date.end());
+	// std::cout << "tab date:" << tab_date << std::endl;
+	for(std::string::iterator it = tab_date.begin(); it != tab_date.end(); it++)
+	{
+		if (isDigit(*it) == 1 && *it != ' ' && *it != '-')
+			throw std::runtime_error("Error: Unauthorized char for date => " + tab_date);
+	}
+
+	for(std::string::iterator it = tab_date.begin(); it != tab_date.end(); it++)
+	{
+		if ((isDigit(*it) == 0 ||  *it == '-') && ((isDigit(*(it + 1))) == 1 && (*(it + 1) != '-') && *(it+1)!='\0'))
+			throw std::runtime_error("Error: Unauthorized char for date => " + tab_date);
+	}
+	return tab_date;
+}
+
 void readInput(const std::string &filename, std::map<std::string, double> &data)
 {
 	std::ifstream input;
@@ -163,6 +187,7 @@ void readInput(const std::string &filename, std::map<std::string, double> &data)
 		try
 		{
 			tab_date = tab_key_val.substr(0, tab_pos);
+			ft_trim_str(tab_date);
 			ft_check_date(tab_date);
 			tab_value_str = tab_key_val.substr(tab_pos + 1);
 			tab_value = ft_check_value(tab_value_str);
@@ -172,18 +197,14 @@ void readInput(const std::string &filename, std::map<std::string, double> &data)
 			std::cout << e.what() << std::endl;
 			continue;
 		}
-		tab_pos = tab_date.find(" ");
-		if(tab_pos != std::string::npos)
-		{
-			tab_date = tab_date.substr(0, tab_pos);
-		}
+	
 		// try
 		// {
 			convertedvalue = valueConverted(tab_value, tab_date, data);
 			if (convertedvalue == -1)
 				std::cout << "Error: anterior date => " << tab_date << std::endl;
 			else
-				std::cout << tab_date << "=> " << tab_value << " = " << convertedvalue << std::endl;
+				std::cout << tab_date << " => " << tab_value << " = " << convertedvalue << std::endl;
 		// }
 		// catch(std::exception &e)
 		// {
