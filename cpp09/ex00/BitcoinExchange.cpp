@@ -17,6 +17,13 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 	return *this;
 }
 
+int isDigit(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (0);
+	return (1);
+}
+
 void readCsv(std::map<std::string, double> &data, const std::string &filename)
 {
 	std::string key_val;
@@ -45,16 +52,23 @@ void readCsv(std::map<std::string, double> &data, const std::string &filename)
 	data_input.close();
 }
 
+//verifier qu'il n'y a que des chiffres ou espaces
 double ft_check_value(const std::string &value)
 {
-	//verifier qu'il n'y a que des chiffres ou espaces
 	double res;
-	
+	// std::cout << value << std::endl;
 	res = std::atof(value.c_str());
 	if (res < 0)
 		throw std::runtime_error("Error: not a positive number");
 	if (res > 1000)
 		throw std::runtime_error("Error: value too large");
+	
+	for(std::string::const_iterator it = value.begin(); it != value.end(); it++)
+	{
+		// std::cout << value << std::endl;
+		if (isDigit(*it) == 1 && *it != ' ' && *it != '.')
+			throw std::runtime_error("Error: non numeric value => " + value);
+	}
 	return res;
 }
 
@@ -91,7 +105,7 @@ void ft_check_date(const std::string &date)
 
 double valueConverted(double value, std::string date, std::map<std::string, double> &data)
 {
-	double last_save = 0;
+	double last_save = -1;
 
 	std::map<std::string, double>::iterator it;
 	for (it = data.begin(); it != data.end(); it++)
@@ -154,7 +168,10 @@ void readInput(const std::string &filename, std::map<std::string, double> &data)
 		// try
 		// {
 			convertedvalue = valueConverted(tab_value, tab_date, data);
-			std::cout << tab_date << "=> " << tab_value << " = " << convertedvalue << std::endl;
+			if (convertedvalue == -1)
+				std::cout << "Error: anterior date => " << tab_date << std::endl;
+			else
+				std::cout << tab_date << "=> " << tab_value << " = " << convertedvalue << std::endl;
 		// }
 		// catch(std::exception &e)
 		// {
