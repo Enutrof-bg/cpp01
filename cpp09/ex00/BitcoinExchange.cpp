@@ -72,17 +72,29 @@ double ft_check_value(const std::string &value)
 	return res;
 }
 
+
 void ft_check_date(const std::string &date)
 {
 	int year;
 	int month;
 	int day;
-	int pos;
+	size_t pos;
+	size_t pos2;
+
+	std::cout << "date:" << date << std::endl;
 
 	pos = date.find("-");
+	if (pos == std::string::npos)
+		throw std::runtime_error("Error: wrong date test1");
+
+	pos2 = date.find("-", pos + 1);
+	if (pos2 == std::string::npos)
+		throw std::runtime_error("Error: wrong date test2");
+
+
 	year = atoi(date.substr(0, pos).c_str());
-	month = atoi(date.substr(pos +1, pos+3).c_str());
-	day = atoi(date.substr(pos +4, pos+6).c_str());
+	month = atoi(date.substr(pos +1, pos2).c_str());
+	day = atoi(date.substr(pos2+1, pos2+2).c_str());
 	if (month > 12 || month < 1 || year < 0 || day < 0)
 		throw std::runtime_error("Error: wrong date");
 	int max_days;
