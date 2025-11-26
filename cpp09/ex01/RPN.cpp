@@ -86,7 +86,7 @@ void ft_check_str(std::string &str)
 	{
 		if ((isDigit(*it) == 1 && isOperat(*it) == 1)&& (*it) != ' ')
 			throw std::runtime_error("Error: non valid argument");
-		if ((isDigit(*it) == 0 || isOperat(*it) == 0) && (*(it + 1) != ' ' && *(it+1) != '\0'))
+		if ((isDigit(*it) == 0 || isOperat(*it) == 0) && (it + 1 != str.end()) && (*(it + 1) != ' '))
 			throw std::runtime_error("Error: non valid argument");
 	}
 	// if (!(isDigit(str[str.size() - 1]) == 0 || isOperat(str[str.size() - 1]) == 0))
