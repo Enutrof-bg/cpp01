@@ -72,14 +72,24 @@ double ft_check_value(const std::string &value)
 // trim from end of string (right)
 inline std::string& rtrim(std::string& s, const char* t)
 {
-    s.erase(s.find_last_not_of(t) + 1);
+	size_t pos = s.find_last_not_of(t);
+	if (pos != std::string::npos)
+		s.erase(pos + 1);
+	else
+		s.clear();
+    // s.erase(s.find_last_not_of(t) + 1);
     return s;
 }
 
 // trim from beginning of string (left)
 inline std::string& ltrim(std::string& s, const char* t)
 {
-    s.erase(0, s.find_first_not_of(t));
+	size_t pos = s.find_first_not_of(t);
+	if (pos != std::string::npos)
+		s.erase(0, pos);
+	else
+		s.clear();
+    // s.erase(0, s.find_first_not_of(t));
     return s;
 }
 
@@ -98,7 +108,10 @@ std::string ft_trim_str(std::string &tab_date)
 	}
 	for(std::string::iterator it = tab_date.begin(); it != tab_date.end(); it++)
 	{
-		if ((isDigit(*it) == 0 ||  *it == '-') && ((isDigit(*(it + 1))) == 1 && (*(it + 1) != '-') && *(it+1)!='\0'))
+		if ((isDigit(*it) == 0 ||  *it == '-')
+			&& (it + 1 != tab_date.end()
+			&& (isDigit(*(it + 1))) == 1
+			&& (*(it + 1) != '-')))
 			throw std::runtime_error("Error: Unauthorized char for date => " + tab_date);
 	}
 	return tab_date;
@@ -137,6 +150,7 @@ void ft_check_date(const std::string &date)
 			break;
 		case 4: case 6: case 9: case 11:
 			max_days = 30;
+			break;
 		default:
 			max_days = 31;
 	}
