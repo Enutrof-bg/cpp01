@@ -46,5 +46,8 @@ public:
 
 	void init_tab(char **argv);
 	void ft_print();
-	void ft_merge();
+	// void ft_merge();
+	std::vector<int> getArr();
 };
+
+std::vector<int> ft_merge(std::vector<int> arr);

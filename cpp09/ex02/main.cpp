@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 	// PmergeMeDeque d1(argv);
 	PmergeMeVector v1(argv);
 	v1.ft_print();
-	v1.ft_merge();
+	ft_merge(v1.getArr());
 	
 	std::cout << "GOOD" << std::endl;
 	return (0);
