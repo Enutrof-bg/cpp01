@@ -114,7 +114,7 @@ size_t ft_insert(std::vector<int> &main, int pend, size_t pos, int lvl)
 	{
 		if (pos == 1 || pos == 0)
 			return ft_insert(main, pend, pos - 1, lvl + 1);
-		return (ft_insert(main, pend, pos - pos / 2, lvl + 1));
+		return (ft_insert(main, pend, pos - (pos / 2), lvl + 1));
 	}
 	else
 	{
