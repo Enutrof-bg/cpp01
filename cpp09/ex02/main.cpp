@@ -44,6 +44,6 @@ int main(int argc, char **argv)
 	v1.ft_print();
 	ft_merge(v1.getArr());
 	
-	std::cout << "GOOD" << std::endl;
+	// std::cout << "GOOD" << std::endl;
 	return (0);
 }

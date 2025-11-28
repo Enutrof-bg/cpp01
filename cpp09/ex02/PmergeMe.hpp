@@ -51,3 +51,5 @@ public:
 };
 
 std::vector<int> ft_merge(std::vector<int> arr);
+
+bool ft_order(std::vector<int> arr);
