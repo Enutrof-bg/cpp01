@@ -29,7 +29,7 @@ ${NAME}: ${SRC}
 	${CXX} ${CXXFLAGS} -c $^
 
 clean: 
-	rm -f main.o PmergeMe.o
+	rm -f main.o PmergeMe.o PmergeMeDeque.o
 
 fclean:clean
 	rm -f PmergeMe
