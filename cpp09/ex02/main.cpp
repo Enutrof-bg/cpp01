@@ -40,10 +40,23 @@ int main(int argc, char **argv)
 	}
 
 	// PmergeMeDeque d1(argv);
-	PmergeMeVector v1(argv);
-	v1.ft_print();
-	ft_merge(v1.getArr());
+	std::clock_t start;
+	double duration_vector;
+
+	start = std::clock();
 	
-	// std::cout << "GOOD" << std::endl;
+	PmergeMeVector v1(argv);
+	std::cout << "Before:";
+	v1.ft_print(v1.getArr());
+	std::cout << std::endl;
+
+	std::vector<int> result = v1.ft_merge(v1.getArr());
+
+	std::cout << "After:";
+	v1.ft_print(v1.getArr());
+	std::cout << std::endl;
+
+	duration_vector = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+	std::cout << "Time vector:" <<duration_vector << std::endl;
 	return (0);
 }

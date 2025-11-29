@@ -27,7 +27,7 @@ void PmergeMeVector::ft_print()
 	}
 	std::cout << std::endl;
 }
-std::vector<int> PmergeMeVector::getArr()
+std::vector<int> &PmergeMeVector::getArr()
 {
 	return v1;
 }
@@ -42,7 +42,8 @@ void ft_print_pair(std::vector<std::pair<int,int> > pair, int reste)
 	std::cout << reste << std::endl;
 }
 
-void ft_print(std::vector<int> vec)
+
+void PmergeMeVector::ft_print(std::vector<int> vec)
 {
 	for (std::vector<int>::iterator it = vec.begin();
 		it != vec.end();it++)
@@ -52,7 +53,7 @@ void ft_print(std::vector<int> vec)
 	std::cout << std::endl;
 }
 
-bool ft_order(std::vector<int> arr)
+bool PmergeMeVector::ft_order(std::vector<int> arr)
 {
 	std::vector<int>::iterator it = arr.begin();
 	it++;
@@ -64,17 +65,17 @@ bool ft_order(std::vector<int> arr)
 	return true;
 }
 
-std::vector<int> jacobsthal(int size)
+std::vector<int> jacobsthal(size_t size)
 {
 	std::vector<int> jacob;
 	std::vector<int> result;
 	jacob.push_back(0);
 	jacob.push_back(1);
 
-	int i = 0;
+	size_t i = 0;
 	int next;
 	int prev;
-	while (i < size)
+	while (i < size && i < 25)
 	{
 		next = jacob[jacob.size() - 1] + (jacob[jacob.size() - 2] * 2);
 		prev = jacob[jacob.size() - 1];
@@ -88,44 +89,131 @@ std::vector<int> jacobsthal(int size)
 		size_t prev = jacob[i - 1];
 		for(size_t j = now; j > prev; j--)
 		{
-			result.push_back(j);
+			if (j <= size)
+				result.push_back(j);
 		}
 	}
 	return result;
 }
 
+void merge_pair(std::vector<std::pair<int,int> >&pairs, size_t left, size_t mid, size_t right)
+{
+	std::vector<std::pair<int,int> > temp;
 
-size_t ft_insert(std::vector<int> &main, int pend, size_t pos, int lvl)
+	size_t i = left;
+	size_t j = mid + 1;
+	// ft_print_pair(temp, 0);
+	// std::cout << std::endl;
+	while (i <= mid && j <= right)
+	{
+		if (pairs[i].first <= pairs[j].first)
+		{
+			temp.push_back(pairs[i]);
+			i++;
+		}
+		else
+		{
+			temp.push_back(pairs[j]);
+			j++;
+		}
+		// ft_print_pair(temp, 0);
+		// std::cout << std::endl;
+	}
+
+	while (i <= mid)
+	{
+		temp.push_back(pairs[i]);
+		i++;
+	}
+
+	while (j <= right)
+	{
+		temp.push_back(pairs[j]);
+		j++;
+	}
+
+	// ft_print_pair(temp, 0);
+	// std::cout << std::endl;
+
+	for(size_t i = 0; i < temp.size(); i++)
+	{	
+		pairs[left + i] = temp[i];
+	}
+	// ft_print(pair);
+	// ft_print_pair(pairs, 0);
+	// std::cout << std::endl;
+}
+
+void merge_sort(std::vector<std::pair<int,int> >&pairs, size_t left, size_t right)
+{
+	if (left < right)
+	{
+		size_t mid = left + (right - left) / 2;
+
+		merge_sort(pairs, left, mid);
+		merge_sort(pairs, mid + 1, right);
+		merge_pair(pairs, left, mid, right);
+
+		// ft_print_pair(pairs, 0);
+		// std::cout << std::endl;
+	}
+
+}
+
+size_t ft_insert(std::vector<int> &main, int pend, size_t pos)
 {
 	if (pos > main.size())
-		pos = main.size() -1;
-	if (lvl == 10)
-		return pos;
-	std::cout << "pos:"<< pos;
-	std::cout << "comapre:" << main[pos];
-	std::cout << "comapre:" << main[pos - 1] << std::endl;
-	if (main[pos] > pend && pend > main[pos - 1])
+		pos = main.size();
+	// if (lvl == 10)
+		// return pos;
+
+	size_t left = 0;
+	size_t right = pos;
+
+	while (left < right)
 	{
-		// std::cout << "HAHAHAHAHAHAH" << std::endl;
-		return pos;
-		// std::cout << "HAHAHAHAHAHAH2" << std::endl;
+		size_t mid = left + (right - left) / 2;
+
+		// std::cout << "comapre:" << left;
+		// std::cout << "comapre:" << right << std::endl;
+		if (main[mid] < pend)
+			left = mid + 1;
+		else
+			right = mid;
+
+		
 	}
-	else if (main[pos] > pend)
-	{
-		if (pos == 1 || pos == 0)
-			return ft_insert(main, pend, pos - 1, lvl + 1);
-		return (ft_insert(main, pend, pos - (pos / 2), lvl + 1));
-	}
-	else
-	{
-		if (pos == 1 || pos == 0)
-			return ft_insert(main, pend, pos + 1, lvl + 1);
-		return (ft_insert(main, pend, pos + pos / 2, lvl + 1));
-	}
+	return left;
+	// std::cout << "pos:"<< pos;
+	// std::cout << "comapre:" << main[pos];
+	// std::cout << "comapre:" << main[pos - 1] << std::endl;
+	// if (pend > main[main.size() - 1])
+	// {
+	// 	std::cout << "asdasdas" << std::endl;
+	// 	return main.size()-1;
+	// }
+	// if (main[pos] > pend && pend > main[pos - 1])
+	// {
+	// 	std::cout << "HAHAHAHAHAHAH" << std::endl;
+	// 	return pos;
+	// 	// std::cout << "HAHAHAHAHAHAH2" << std::endl;
+	// }
+	// else if (main[pos] > pend)
+	// {
+	// 	if (pos == 1 || pos == 0)
+	// 		return ft_insert(main, pend, pos - 1, lvl + 1);
+	// 	return (ft_insert(main, pend, pos - (pos / 2), lvl + 1));
+	// }
+	// else
+	// {
+	// 	if (pos == 1 || pos == 0)
+	// 		return ft_insert(main, pend, pos + 1, lvl + 1);
+	// 	return (ft_insert(main, pend, pos + pos / 2, lvl + 1));
+
 }
 
 
-std::vector<int> ft_merge(std::vector<int> arr)
+std::vector<int> PmergeMeVector::ft_merge(std::vector<int> &arr)
 {
 	if (arr.size() <= 1)
 		return arr;
@@ -145,11 +233,13 @@ std::vector<int> ft_merge(std::vector<int> arr)
 	if (arr.size() % 2 == 1)
 		reste = arr.back();
 
-
+	// ft_print_pair(pair, reste);
 	//refaire le sort sans la fonction std::sort //recursive??
-	std::sort(pair.begin(), pair.end());
-
+	// std::sort(pair.begin(), pair.end());
+	merge_sort(pair, 0, pair.size() -1);
 	
+	// ft_print_pair(pair, reste);
+
 
 	std::vector<int> main;
 	std::vector<int> pend;
@@ -161,43 +251,54 @@ std::vector<int> ft_merge(std::vector<int> arr)
 	}
 	if (reste != -1)
 		pend.push_back(reste);
+
 	ft_print(main);
 	ft_print(pend);
 
-	main.insert(main.begin(), pend[0]);
-	ft_print(main);
+	// main.insert(main.begin(), pend[0]);
+	// ft_print(main);
 
 
 	std::vector<int> jacob = jacobsthal(pend.size());
-	ft_print(jacob);
+	// std::cout << "suite de jacob:";
+	// ft_print(jacob);
+
+	main.insert(main.begin(), pend[0]);
+	// ft_print(main);
+
 
 	size_t index;
-	std::cout << "jacob: ";
+	
 	for (size_t i = 1; i < pend.size(); i++)
 	{
+		// std::cout << "jacob: ";
 		index = jacob[i] - 1;
-		std::cout << index << " " << pend[index] << "|" << std::endl;;
+		// if (index > pend.size())
+			// index = jacob[]
+		// std::cout << index << " " << pend[index] << "|" << std::endl;;
 		int toinsert = pend[index];
-		int pos = ft_insert(main, pend[index], index, 0);
-		std::cout << "toinsert:" << pend[index] << std::endl;
-		std::cout << "pos:" <<pos << std::endl;
-		std::cout << "HAHAHAHAHAHAH" << std::endl;
+		int max_pos = jacob[i] + i;
+		int pos = ft_insert(main, toinsert, max_pos);
+		// std::cout << "toinsert:" << pend[index] << std::endl;
+		// std::cout << "pos:" <<pos << std::endl;
+		// std::cout << "HAHAHAHAHAHAH" << std::endl;
 		main.insert(main.begin() + pos, toinsert);
 		// if (main[pos/2] > pend[index])
 		// {
 
 		// }
-		std::cout << std::endl;
+		// std::cout << std::endl;
 	
-		ft_print(main);
+		// ft_print(main);
 	}
-	std::cout << std::endl;
+	// std::cout << std::endl;
 
-	ft_print(main);
+	// ft_print(main);
 
 	if (ft_order(main))
 		std::cout << "GOOD" << std::endl;
 	else
 		std::cout << "FALSE" << std::endl;
-	return arr;
+	arr = main;
+	return main;
 }

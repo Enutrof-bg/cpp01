@@ -6,40 +6,14 @@
 #include <vector>
 #include <deque>
 #include <algorithm>
+#include <ctime>
 
-// template <typename T>
-// class PmergeMe
-// {
-// private:
-
-// protected:
-// 	T tab;
-// public:
-// 	static void init_tab(char **argv);
-// };
-
-// class PmergeMeVector : public PmergeMe<std::vector<int> >
-// {
-// private:
-
-// public:
-// 	PmergeMeVector(char **argv);
-// 	~PmergeMeVector();
-// };
-
-// class PmergeMeDeque : public PmergeMe<std::deque<int> >
-// {
-// private:
-
-// public:
-// 	PmergeMeDeque(char **argv);
-// 	~PmergeMeDeque();
-// };
 
 class PmergeMeVector
 {
 private:
 	std::vector<int> v1;
+	std::deque<int> v2;
 public:
 	PmergeMeVector(char **argv);
 	~PmergeMeVector();
@@ -47,9 +21,15 @@ public:
 	void init_tab(char **argv);
 	void ft_print();
 	// void ft_merge();
-	std::vector<int> getArr();
+	std::vector<int> &getArr();
+
+	std::vector<int> ft_merge(std::vector<int> &arr);
+	bool ft_order(std::vector<int> arr);
+	void ft_print(std::vector<int> vec);
 };
 
-std::vector<int> ft_merge(std::vector<int> arr);
+// std::vector<int> ft_merge(std::vector<int> &arr);
 
-bool ft_order(std::vector<int> arr);
+// bool ft_order(std::vector<int> arr);
+
+// void ft_print(std::vector<int> vec);
