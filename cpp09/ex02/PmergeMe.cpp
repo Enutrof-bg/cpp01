@@ -1,14 +1,15 @@
 #include "PmergeMe.hpp"
 
-PmergeMeVector::PmergeMeVector(char **argv)
+template<typename T>
+PmergeMeVector<T>::PmergeMeVector(char **argv)
 {
 	init_tab(argv);
 }
-
-PmergeMeVector::~PmergeMeVector()
+template<typename T>
+PmergeMeVector<T>::~PmergeMeVector()
 {}
-
-void PmergeMeVector::init_tab(char **argv)
+template<typename T>
+void PmergeMeVector<T>::init_tab(char **argv)
 {
 	int val;
 
@@ -18,16 +19,17 @@ void PmergeMeVector::init_tab(char **argv)
 		v1.push_back(val);
 	}
 }
-
-void PmergeMeVector::ft_print()
+template<typename T>
+void PmergeMeVector<T>::ft_print()
 {
-	for(std::vector<int>::iterator it = v1.begin(); it != v1.end(); it++)
+	for(typename T::iterator it = v1.begin(); it != v1.end(); it++)
 	{
 		std::cout << *it << std::endl;		
 	}
 	std::cout << std::endl;
 }
-std::vector<int> &PmergeMeVector::getArr()
+template<typename T>
+T &PmergeMeVector<T>::getArr()
 {
 	return v1;
 }
@@ -42,20 +44,20 @@ void ft_print_pair(std::vector<std::pair<int,int> > pair, int reste)
 	std::cout << reste << std::endl;
 }
 
-
-void PmergeMeVector::ft_print(std::vector<int> vec)
+template<typename T>
+void PmergeMeVector<T>::ft_print(T vec)
 {
-	for (std::vector<int>::iterator it = vec.begin();
+	for (typename T::iterator it = vec.begin();
 		it != vec.end();it++)
 	{
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
 }
-
-bool PmergeMeVector::ft_order(std::vector<int> arr)
+template<typename T>
+bool PmergeMeVector<T>::ft_order(T arr)
 {
-	std::vector<int>::iterator it = arr.begin();
+	typename T::iterator it = arr.begin();
 	it++;
 	for(;it != arr.end(); it++)
 	{
@@ -64,11 +66,11 @@ bool PmergeMeVector::ft_order(std::vector<int> arr)
 	}
 	return true;
 }
-
-std::vector<int> jacobsthal(size_t size)
+template<typename T>
+T jacobsthal(size_t size)
 {
-	std::vector<int> jacob;
-	std::vector<int> result;
+	T jacob;
+	T result;
 	jacob.push_back(0);
 	jacob.push_back(1);
 
@@ -159,8 +161,8 @@ void merge_sort(std::vector<std::pair<int,int> >&pairs, size_t left, size_t righ
 	}
 
 }
-
-size_t ft_insert(std::vector<int> &main, int pend, size_t pos)
+template<typename T>
+size_t ft_insert(T &main, int pend, size_t pos)
 {
 	if (pos > main.size())
 		pos = main.size();
@@ -212,8 +214,8 @@ size_t ft_insert(std::vector<int> &main, int pend, size_t pos)
 
 }
 
-
-std::vector<int> PmergeMeVector::ft_merge(std::vector<int> &arr)
+template<typename T>
+T PmergeMeVector<T>::ft_merge(T &arr)
 {
 	if (arr.size() <= 1)
 		return arr;
@@ -241,8 +243,8 @@ std::vector<int> PmergeMeVector::ft_merge(std::vector<int> &arr)
 	// ft_print_pair(pair, reste);
 
 
-	std::vector<int> main;
-	std::vector<int> pend;
+	T main;
+	T pend;
 	for(std::vector<std::pair<int,int> >::iterator it = pair.begin();
 		it != pair.end(); it++)
 	{
@@ -259,7 +261,7 @@ std::vector<int> PmergeMeVector::ft_merge(std::vector<int> &arr)
 	// ft_print(main);
 
 
-	std::vector<int> jacob = jacobsthal(pend.size());
+	T jacob = jacobsthal(pend.size());
 	// std::cout << "suite de jacob:";
 	// ft_print(jacob);
 
@@ -302,3 +304,4 @@ std::vector<int> PmergeMeVector::ft_merge(std::vector<int> &arr)
 	arr = main;
 	return main;
 }
+// template class PmergeVector<std::vector<int> >;
