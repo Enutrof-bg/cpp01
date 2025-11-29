@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+#include "PmergeMeDeque.hpp"
 
 int isDigit(char c)
 {
@@ -38,25 +39,46 @@ int main(int argc, char **argv)
 		std::cout << "Error: wrong arg, please positive int only 💩" << std::endl;
 		return (1);
 	}
-
-	// PmergeMeDeque d1(argv);
+{
 	std::clock_t start;
-	// double duration_vector;
+	double duration_vector;
 
 	start = std::clock();
 	
-	PmergeMeVector<std::vector<int> > v1(argv);
-	// std::cout << "Before:";
+	PmergeMeVector v1(argv);
+	std::cout << "Before:";
 	// v1.ft_print(v1.getArr());
-	// std::cout << std::endl;
+	std::cout << std::endl;
 
-	// std::vector<int> result = v1.ft_merge(v1.getArr());
+	std::vector<int> result = v1.ft_merge(v1.getArr());
 
-	// std::cout << "After:";
+	std::cout << "After:";
 	// v1.ft_print(v1.getArr());
-	// std::cout << std::endl;
+	std::cout << std::endl;
 
-	// duration_vector = (std::clock() - start) / (double)CLOCKS_PER_SEC;
-	// std::cout << "Time vector:" <<duration_vector << std::endl;
+	duration_vector = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+	std::cout << std::fixed << "Time vector:" <<duration_vector << std::endl;
+}
+
+{
+	std::clock_t start_deque;
+	double duration_deque;
+
+	start_deque = std::clock();
+	
+	PmergeMeDeque v1(argv);
+	std::cout << "Before:";
+	// v1.ft_print(v1.getArr());
+	std::cout << std::endl;
+
+	std::deque<int> result = v1.ft_merge(v1.getArr());
+
+	std::cout << "After:";
+	// v1.ft_print(v1.getArr());
+	std::cout << std::endl;
+
+	duration_deque = (std::clock() - start_deque) / (double)CLOCKS_PER_SEC;
+	std::cout << std::fixed <<"Time deque:" << duration_deque << std::endl;
+}
 	return (0);
 }

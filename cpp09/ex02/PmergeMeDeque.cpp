@@ -1,14 +1,14 @@
-#include "PmergeMe.hpp"
+#include "PmergeMeDeque.hpp"
 
-PmergeMeVector::PmergeMeVector(char **argv)
+PmergeMeDeque::PmergeMeDeque(char **argv)
 {
 	init_tab(argv);
 }
 
-PmergeMeVector::~PmergeMeVector()
+PmergeMeDeque::~PmergeMeDeque()
 {}
 
-void PmergeMeVector::init_tab(char **argv)
+void PmergeMeDeque::init_tab(char **argv)
 {
 	int val;
 
@@ -19,22 +19,22 @@ void PmergeMeVector::init_tab(char **argv)
 	}
 }
 
-void PmergeMeVector::ft_print()
+void PmergeMeDeque::ft_print()
 {
-	for(std::vector<int>::iterator it = v1.begin(); it != v1.end(); it++)
+	for(std::deque<int>::iterator it = v1.begin(); it != v1.end(); it++)
 	{
 		std::cout << *it << std::endl;		
 	}
 	std::cout << std::endl;
 }
-std::vector<int> &PmergeMeVector::getArr()
+std::deque<int> &PmergeMeDeque::getArr()
 {
 	return v1;
 }
 
-void ft_print_pair(std::vector<std::pair<int,int> > pair, int reste)
+void ft_print_pair(std::deque<std::pair<int,int> > pair, int reste)
 {
-	for (std::vector<std::pair<int, int> >::iterator it = pair.begin();
+	for (std::deque<std::pair<int, int> >::iterator it = pair.begin();
 		it != pair.end();it++)
 	{
 		std::cout << it->first << ", "<< it->second << std::endl;
@@ -43,9 +43,9 @@ void ft_print_pair(std::vector<std::pair<int,int> > pair, int reste)
 }
 
 
-void PmergeMeVector::ft_print(std::vector<int> vec)
+void PmergeMeDeque::ft_print(std::deque<int> vec)
 {
-	for (std::vector<int>::iterator it = vec.begin();
+	for (std::deque<int>::iterator it = vec.begin();
 		it != vec.end();it++)
 	{
 		std::cout << *it << " ";
@@ -53,9 +53,9 @@ void PmergeMeVector::ft_print(std::vector<int> vec)
 	std::cout << std::endl;
 }
 
-bool PmergeMeVector::ft_order(std::vector<int> arr)
+bool PmergeMeDeque::ft_order(std::deque<int> arr)
 {
-	std::vector<int>::iterator it = arr.begin();
+	std::deque<int>::iterator it = arr.begin();
 	it++;
 	for(;it != arr.end(); it++)
 	{
@@ -65,10 +65,10 @@ bool PmergeMeVector::ft_order(std::vector<int> arr)
 	return true;
 }
 
-std::vector<int> jacobsthal(size_t size)
+std::deque<int> jacobsthal_deque(size_t size)
 {
-	std::vector<int> jacob;
-	std::vector<int> result;
+	std::deque<int> jacob;
+	std::deque<int> result;
 	jacob.push_back(0);
 	jacob.push_back(1);
 
@@ -96,9 +96,9 @@ std::vector<int> jacobsthal(size_t size)
 	return result;
 }
 
-void merge_pair(std::vector<std::pair<int,int> >&pairs, size_t left, size_t mid, size_t right)
+void merge_pair(std::deque<std::pair<int,int> >&pairs, size_t left, size_t mid, size_t right)
 {
-	std::vector<std::pair<int,int> > temp;
+	std::deque<std::pair<int,int> > temp;
 
 	size_t i = left;
 	size_t j = mid + 1;
@@ -144,7 +144,7 @@ void merge_pair(std::vector<std::pair<int,int> >&pairs, size_t left, size_t mid,
 	// std::cout << std::endl;
 }
 
-void merge_sort(std::vector<std::pair<int,int> >&pairs, size_t left, size_t right)
+void merge_sort(std::deque<std::pair<int,int> >&pairs, size_t left, size_t right)
 {
 	if (left < right)
 	{
@@ -160,7 +160,7 @@ void merge_sort(std::vector<std::pair<int,int> >&pairs, size_t left, size_t righ
 
 }
 
-size_t ft_insert(std::vector<int> &main, int pend, size_t pos)
+size_t ft_insert(std::deque<int> &main, int pend, size_t pos)
 {
 	if (pos > main.size())
 		pos = main.size();
@@ -213,13 +213,13 @@ size_t ft_insert(std::vector<int> &main, int pend, size_t pos)
 }
 
 
-std::vector<int> PmergeMeVector::ft_merge(std::vector<int> &arr)
+std::deque<int> PmergeMeDeque::ft_merge(std::deque<int> &arr)
 {
 	if (arr.size() <= 1)
 		return arr;
 	int reste = -1;
 
-	std::vector<std::pair<int,int> > pair;
+	std::deque<std::pair<int,int> > pair;
 	for (size_t i = 0; i + 1 < arr.size(); i += 2)
 	{
 		int a = arr[i];
@@ -241,9 +241,9 @@ std::vector<int> PmergeMeVector::ft_merge(std::vector<int> &arr)
 	// ft_print_pair(pair, reste);
 
 
-	std::vector<int> main;
-	std::vector<int> pend;
-	for(std::vector<std::pair<int,int> >::iterator it = pair.begin();
+	std::deque<int> main;
+	std::deque<int> pend;
+	for(std::deque<std::pair<int,int> >::iterator it = pair.begin();
 		it != pair.end(); it++)
 	{
 		main.push_back(it->first);
@@ -259,7 +259,7 @@ std::vector<int> PmergeMeVector::ft_merge(std::vector<int> &arr)
 	// ft_print(main);
 
 
-	std::vector<int> jacob = jacobsthal(pend.size());
+	std::deque<int> jacob = jacobsthal_deque(pend.size());
 	// std::cout << "suite de jacob:";
 	// ft_print(jacob);
 

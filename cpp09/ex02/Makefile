@@ -14,7 +14,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-FILE = main.cpp PmergeMe.cpp
+FILE = main.cpp PmergeMe.cpp PmergeMeDeque.cpp
 
 NAME = PmergeMe
 
