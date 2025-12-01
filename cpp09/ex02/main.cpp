@@ -13,6 +13,8 @@ int ft_check_arg(int argc, char **argv)
 	size_t j = 0;
 	while (i < argc)
 	{
+		if (strlen(argv[i]) < 1)
+			return (1);
 		while (j < strlen(argv[i]))
 		{
 			if (argv[i][0] == '+')
@@ -60,9 +62,9 @@ int main(int argc, char **argv)
 	duration_deque = (std::clock() - start_deque) / (double)CLOCKS_PER_SEC;
 
 	
-	std::cout << "After:" << vec1 << std::endl;
+	std::cout << " After:" << vec1 << std::endl;
 	std::cout << std::fixed << "Time vector:" <<duration_vector << std::endl;
-	std::cout << std::fixed <<"Time deque:" << duration_deque << std::endl;
+	std::cout << std::fixed << " Time deque:" << duration_deque << std::endl;
 
 	return (0);
 }

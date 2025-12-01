@@ -220,10 +220,10 @@ std::vector<int> PmergeMeVector::ft_merge(std::vector<int> &arr)
 	}
 
 
-	if (ft_order(main))
-		std::cout << "GOOD" << std::endl;
-	else
-		std::cout << "FALSE" << std::endl;
+	// if (ft_order(main))
+	// 	std::cout << "GOOD" << std::endl;
+	// else
+	// 	std::cout << "FALSE" << std::endl;
 	arr = main;
 	return main;
 }
