@@ -20,8 +20,11 @@ public:
 	void init_tab(char **argv);
 	void ft_print();
 	std::deque<int> &getArr();
+	std::deque<int> getArr() const;
 
 	std::deque<int> ft_merge(std::deque<int> &arr);
 	bool ft_order(std::deque<int> arr);
 	void ft_print(std::deque<int> vec);
 };
+
+std::ostream &operator<<(std::ostream &out, const PmergeMeDeque &vec);

@@ -20,8 +20,11 @@ public:
 	void init_tab(char **argv);
 	void ft_print();
 	std::vector<int> &getArr();
+	std::vector<int> getArr() const;
 
 	std::vector<int> ft_merge(std::vector<int> &arr);
 	bool ft_order(std::vector<int> arr);
 	void ft_print(std::vector<int> vec);
 };
+
+std::ostream &operator<<(std::ostream &out, const PmergeMeVector &vec);
