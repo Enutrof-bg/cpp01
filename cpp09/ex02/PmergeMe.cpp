@@ -80,11 +80,11 @@ std::vector<int> jacobsthal(size_t size)
 
 	size_t i = 0;
 	int next;
-	int prev;
-	while (i < size && i < 25)
+	// int prev;
+	while (i < size && jacob[jacob.size() - 1] < (int)size)
 	{
 		next = jacob[jacob.size() - 1] + (jacob[jacob.size() - 2] * 2);
-		prev = jacob[jacob.size() - 1];
+		// prev = jacob[jacob.size() - 1];
 		jacob.push_back(next);
 		i++;
 	}
@@ -214,7 +214,7 @@ std::vector<int> PmergeMeVector::ft_merge(std::vector<int> &arr)
 	{
 		index = jacob[i] - 1;
 		int toinsert = pend[index];
-		int max_pos = jacob[i];
+		int max_pos = index + i + 1;
 		int pos = ft_insert(main, toinsert, max_pos);
 		main.insert(main.begin() + pos, toinsert);
 	}
