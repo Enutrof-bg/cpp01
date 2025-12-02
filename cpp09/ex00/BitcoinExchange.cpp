@@ -45,10 +45,6 @@ void readCsv(std::map<std::string, double> &data, const std::string &filename)
 		data_value = std::atof(key_val.substr(data_pos + 1).c_str());
 		data.insert(std::make_pair(data_date, data_value));
 	}
-	// for (std::map<std::string, double>::iterator it = data.begin(); it != data.end(); it++)
-	// {
-	// 	std::cout << it->first << " "<< it->second << std::endl;
-	// }
 	data_input.close();
 }
 
@@ -69,7 +65,6 @@ double ft_check_value(const std::string &value)
 	return res;
 }
 
-// trim from end of string (right)
 inline std::string& rtrim(std::string& s, const char* t)
 {
 	size_t pos = s.find_last_not_of(t);
@@ -77,11 +72,9 @@ inline std::string& rtrim(std::string& s, const char* t)
 		s.erase(pos + 1);
 	else
 		s.clear();
-    // s.erase(s.find_last_not_of(t) + 1);
     return s;
 }
 
-// trim from beginning of string (left)
 inline std::string& ltrim(std::string& s, const char* t)
 {
 	size_t pos = s.find_first_not_of(t);
@@ -89,11 +82,9 @@ inline std::string& ltrim(std::string& s, const char* t)
 		s.erase(0, pos);
 	else
 		s.clear();
-    // s.erase(0, s.find_first_not_of(t));
     return s;
 }
 
-// trim from both ends of string (right then left)
 inline std::string& trim(std::string& s, const char* t)
 {
     return ltrim(rtrim(s, t), t);
@@ -137,8 +128,8 @@ void ft_check_date(const std::string &date)
 	year = atoi(date.substr(0, pos).c_str());
 	month = atoi(date.substr(pos +1, pos2).c_str());
 	day = atoi(date.substr(pos2+1, pos2+2).c_str());
-	if (month > 12 || month < 1 || year < 0 || day < 0)
-		throw std::runtime_error("Error: wrong date");
+	if (month > 12 || month < 1 || year < 0 || day <= 0)
+		throw std::runtime_error("Error: wrong date => " + date);
 	int max_days;
 	switch(month)
 	{
@@ -155,7 +146,7 @@ void ft_check_date(const std::string &date)
 			max_days = 31;
 	}
 	if (day > max_days)
-		throw std::runtime_error("Error: wrong date");
+		throw std::runtime_error("Error: wrong date => " + date);
 }
 
 double valueConverted(double value, std::string date, std::map<std::string, double> &data)
@@ -241,5 +232,3 @@ void BitcoinExchange::mapping(const std::string &filename)
 
 	readInput(filename, data);
 }
-
-//todo: afficher correctement notation avec 2 decimal
