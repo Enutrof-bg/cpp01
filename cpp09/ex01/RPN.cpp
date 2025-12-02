@@ -92,8 +92,6 @@ void ft_check_str(std::string &str)
 			&& (*(it + 1) != ' '))
 			throw std::runtime_error("Error: non valid argument");
 	}
-	// if (!(isDigit(str[str.size() - 1]) == 0 || isOperat(str[str.size() - 1]) == 0))
-		// throw std::runtime_error("Error: non valid argument");
 }
 
 double RPN::calculate(char *argv)
