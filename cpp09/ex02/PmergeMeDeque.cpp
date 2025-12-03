@@ -188,7 +188,7 @@ std::deque<int> PmergeMeDeque::ft_merge(std::deque<int> &arr)
 		reste = arr.back();
 
 
-	merge_sort(pair, 0, pair.size() -1);
+	merge_sort(pair, 0, pair.size() - 1);
 
 
 	std::deque<int> main;

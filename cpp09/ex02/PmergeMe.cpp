@@ -188,7 +188,7 @@ std::vector<int> PmergeMeVector::ft_merge(std::vector<int> &arr)
 		reste = arr.back();
 
 	
-	merge_sort(pair, 0, pair.size() -1);
+	merge_sort(pair, 0, pair.size() - 1);
 
 
 	std::vector<int> main;
