@@ -214,7 +214,7 @@ std::vector<int> PmergeMeVector::ft_merge(std::vector<int> &arr)
 	{
 		index = jacob[i] - 1;
 		int toinsert = pend[index];
-		int max_pos = index + i + 1;
+		int max_pos = index + i;
 		int pos = ft_insert(main, toinsert, max_pos);
 		main.insert(main.begin() + pos, toinsert);
 	}

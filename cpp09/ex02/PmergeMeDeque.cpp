@@ -214,7 +214,7 @@ std::deque<int> PmergeMeDeque::ft_merge(std::deque<int> &arr)
 	{
 		index = jacob[i] - 1;
 		int toinsert = pend[index];
-		int max_pos = jacob[i] + i;
+		int max_pos = index + i;
 		int pos = ft_insert(main, toinsert, max_pos);
 		main.insert(main.begin() + pos, toinsert);
 	}
