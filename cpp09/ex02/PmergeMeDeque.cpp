@@ -80,7 +80,7 @@ std::deque<int> jacobsthal_deque(size_t size)
 	size_t i = 0;
 	int next;
 	// int prev;
-	while (i < size && i < 25)
+	while (i < size && jacob[jacob.size() - 1] < (int)size)
 	{
 		next = jacob[jacob.size() - 1] + (jacob[jacob.size() - 2] * 2);
 		// prev = jacob[jacob.size() - 1];
